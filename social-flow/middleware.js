@@ -11,26 +11,15 @@ const redirects = {
 };
 
 export function middleware(request) {
-  const { pathname } = request.nextUrl;
+  const url = request.nextUrl;
+  const target = redirects[url.pathname];
+  if (!target) return NextResponse.next();
 
-  // Skip files like .png, .js, .css, .xml
-  if (pathname.includes(".")) {
-    return NextResponse.next();
-  }
-
-  const target = redirects[pathname];
-  if (!target) {
-    return NextResponse.next();
-  }
-
-  const url = request.nextUrl.clone();
-  url.pathname = target;
-
-  return NextResponse.redirect(url, 308);
+  const redirectUrl = url.clone();
+  redirectUrl.pathname = target;
+  return NextResponse.redirect(redirectUrl, 308);
 }
 
 export const config = {
-  matcher: [
-    "/((?!api|_next|favicon.ico|robots.txt|sitemap.xml).*)",
-  ],
+  matcher: ["/instagram", "/tiktok", "/facebook", "/youtube", "/ig", "/fb", "/yt"],
 };
