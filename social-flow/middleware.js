@@ -11,25 +11,26 @@ const redirects = {
 };
 
 export function middleware(request) {
-  const url = request.nextUrl;
-  const pathname = url.pathname;
+  const { pathname } = request.nextUrl;
+
+  // Skip files like .png, .js, .css, .xml
+  if (pathname.includes(".")) {
+    return NextResponse.next();
+  }
 
   const target = redirects[pathname];
-  if (!target) return NextResponse.next();
+  if (!target) {
+    return NextResponse.next();
+  }
 
-  // Avoid redirect loops
-  if (pathname === target) return NextResponse.next();
+  const url = request.nextUrl.clone();
+  url.pathname = target;
 
-  // Build redirect using nextUrl (edge safe)
-  const redirectUrl = url.clone();
-  redirectUrl.pathname = target;
-
-  return NextResponse.redirect(redirectUrl, 308);
+  return NextResponse.redirect(url, 308);
 }
 
 export const config = {
   matcher: [
-    // exclude: api, next internals, and any file with an extension (e.g., .png, .txt, .xml)
-    "/((?!api|_next|favicon.ico|robots.txt|sitemap.xml).*)(?<!\\..*)",
+    "/((?!api|_next|favicon.ico|robots.txt|sitemap.xml).*)",
   ],
 };
