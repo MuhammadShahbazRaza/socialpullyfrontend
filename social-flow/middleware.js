@@ -1,28 +1,35 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
+
+const redirects = {
+  "/instagram": "/instagram-reel-downloader",
+  "/tiktok": "/tiktok-video-downloader",
+  "/facebook": "/facebook-video-downloader",
+  "/youtube": "/youtube-video-downloader",
+  "/ig": "/instagram-reel-downloader",
+  "/fb": "/facebook-video-downloader",
+  "/yt": "/youtube-video-downloader",
+};
 
 export function middleware(request) {
-  const { pathname } = request.nextUrl;
+  const url = request.nextUrl;
+  const pathname = url.pathname;
 
-  // Redirect common misspellings and old URLs
-  const redirects = {
-    '/instagram': '/instagram-reel-downloader',
-    '/tiktok': '/tiktok-video-downloader',
-    '/facebook': '/facebook-video-downloader',
-    '/youtube': '/youtube-video-downloader',
-    '/ig': '/instagram-reel-downloader',
-    '/fb': '/facebook-video-downloader',
-    '/yt': '/youtube-video-downloader',
-  };
+  const target = redirects[pathname];
+  if (!target) return NextResponse.next();
 
-  if (redirects[pathname]) {
-    return NextResponse.redirect(new URL(redirects[pathname], request.url));
-  }
+  // Avoid redirect loops
+  if (pathname === target) return NextResponse.next();
 
-  return NextResponse.next();
+  // Build redirect using nextUrl (edge safe)
+  const redirectUrl = url.clone();
+  redirectUrl.pathname = target;
+
+  return NextResponse.redirect(redirectUrl, 308);
 }
 
 export const config = {
   matcher: [
-    '/((?!api|_next/static|_next/image|favicon.ico).*)',
+    // exclude: api, next internals, and any file with an extension (e.g., .png, .txt, .xml)
+    "/((?!api|_next|favicon.ico|robots.txt|sitemap.xml).*)(?<!\\..*)",
   ],
 };
