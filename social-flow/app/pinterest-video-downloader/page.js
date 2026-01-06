@@ -1,7 +1,21 @@
-import DownloadForm from '@/components/DownloadForm';
+import DownloadForm from "@/components/DownloadForm";
 
 export const metadata = {
-  title: 'Twitter Video Downloader - Download Twitter/X Videos & GIFs Free',
-  description: 'Free Twitter (X) video downloader. Save Twitter videos, GIFs in HD quality. Fast and easy Twitter media download.',
-  keywords: ['twitter video downloader', 'download twitter videos', 'x video downloader', 'twitter gif download']
+  title: "Pinterest Video Downloader - Download Pinterest Videos Free",
+  description:
+    "Free Pinterest video downloader. Save Pinterest videos in HD quality. Fast and easy Pinterest media download.",
+  keywords: [
+    "pinterest video downloader",
+    "download pinterest videos",
+    "pinterest downloader",
+    "save pinterest video",
+  ],
 };
+
+export default function PinterestVideoDownloaderPage() {
+  return (
+    <main>
+      <DownloadForm platform="pinterest" />
+    </main>
+  );
+}
