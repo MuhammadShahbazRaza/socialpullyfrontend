@@ -4,7 +4,7 @@ import { Download, Loader, CheckCircle, AlertCircle, Video, Info, Clock, Eye } f
 
 const API_BASE =
   process.env.NEXT_PUBLIC_API_BASE?.replace(/\/$/, '') ||
-  'https://301759dfa4bd.ngrok-free.app';
+  'https://socialpullybac-production-6b75.up.railway.app';
 
 function toAbsoluteUrl(maybeRelative) {
   try {
