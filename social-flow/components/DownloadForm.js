@@ -1,6 +1,6 @@
 'use client';
-import { useState, useRef } from 'react';
-import { Download, Loader, CheckCircle, AlertCircle, Video, Info, Clock, Eye } from 'lucide-react';
+import { useState } from 'react';
+import { Download, Loader, CheckCircle, AlertCircle, Video, Info, Clock, Eye, X } from 'lucide-react';
 
 const API_BASE =
   process.env.NEXT_PUBLIC_API_BASE?.replace(/\/$/, '') ||
@@ -14,25 +14,10 @@ function toAbsoluteUrl(maybeRelative) {
   }
 }
 
-function filenameFromContentDisposition(cd) {
-  if (!cd) return '';
-  // filename*=UTF-8''... OR filename="..."
-  const star = /filename\*\s*=\s*(?:UTF-8'')?([^;]+)/i.exec(cd);
-  if (star?.[1]) return decodeURIComponent(star[1].trim().replace(/^"|"$/g, ''));
-  const normal = /filename\s*=\s*([^;]+)/i.exec(cd);
-  if (normal?.[1]) return normal[1].trim().replace(/^"|"$/g, '');
-  return '';
-}
-
-// This avoids tab navigation/spinner by NOT changing window.location
-// This avoids tab navigation/spinner by NOT changing window.location
 async function triggerBrowserDownload(fileUrl, fallbackFilename) {
-  // Use hidden iframe with download attribute to prevent navigation
-  // This method works better with backend streams that may not support CORS fully
   const iframe = document.createElement('iframe');
   iframe.style.cssText = 'position:absolute;width:0;height:0;border:0;visibility:hidden;';
   
-  // Create a temporary page that triggers download without navigation
   const htmlContent = `
     <!DOCTYPE html>
     <html>
@@ -47,7 +32,6 @@ async function triggerBrowserDownload(fileUrl, fallbackFilename) {
           document.body.appendChild(a);
           a.click();
           
-          // Notify parent that download started
           setTimeout(() => {
             window.parent.postMessage('download-started', '*');
           }, 100);
@@ -60,7 +44,6 @@ async function triggerBrowserDownload(fileUrl, fallbackFilename) {
   iframe.srcdoc = htmlContent;
   document.body.appendChild(iframe);
   
-  // Cleanup after download starts
   return new Promise((resolve) => {
     const listener = (event) => {
       if (event.data === 'download-started') {
@@ -75,7 +58,6 @@ async function triggerBrowserDownload(fileUrl, fallbackFilename) {
     };
     window.addEventListener('message', listener);
     
-    // Fallback cleanup if message never arrives
     setTimeout(() => {
       window.removeEventListener('message', listener);
       try {
@@ -95,8 +77,7 @@ export default function DownloadForm({ platform = 'all' }) {
   const [quality, setQuality] = useState('best');
   const [downloadSuccess, setDownloadSuccess] = useState(false);
   const [downloadUrl, setDownloadUrl] = useState('');
-
-  const formTopRef = useRef(null);
+  const [showModal, setShowModal] = useState(false);
 
   const resetForm = () => {
     setUrl('');
@@ -105,7 +86,7 @@ export default function DownloadForm({ platform = 'all' }) {
     setError('');
     setDownloadSuccess(false);
     setDownloadUrl('');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setShowModal(false);
   };
 
   const fetchVideoInfo = async () => {
@@ -118,6 +99,7 @@ export default function DownloadForm({ platform = 'all' }) {
     setError('');
     setVideoInfo(null);
     setDownloadUrl('');
+    setShowModal(true);
 
     try {
       const response = await fetch(`${API_BASE}/api/info/`, {
@@ -159,7 +141,6 @@ export default function DownloadForm({ platform = 'all' }) {
       });
 
       const data = await response.json();
-      console.log('Download response:', data);
 
       if (data.success && data.download_url) {
         const absDownloadUrl = toAbsoluteUrl(data.download_url);
@@ -167,7 +148,6 @@ export default function DownloadForm({ platform = 'all' }) {
 
         const filename = data.filename || `video_${Date.now()}.${data.ext || 'mp4'}`;
 
-        // IMPORTANT: await blob-download so we do not navigate the tab
         await triggerBrowserDownload(absDownloadUrl, filename);
 
         setDownloadSuccess(true);
@@ -190,17 +170,11 @@ export default function DownloadForm({ platform = 'all' }) {
     await triggerBrowserDownload(downloadUrl, filename);
   };
 
-
   const formatDuration = (seconds) => {
     if (!seconds) return 'Unknown';
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
     return `${mins}:${secs.toString().padStart(2, '0')}`;
-  };
-
-  const formatFileSize = (bytes) => {
-    if (!bytes) return 'Unknown';
-    return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
   };
 
   const placeholder =
@@ -223,25 +197,25 @@ export default function DownloadForm({ platform = 'all' }) {
   ];
 
   return (
-    <div className="max-w-4xl mx-auto">
-      <div ref={formTopRef} className="bg-white rounded-2xl shadow-2xl p-8">
-        {/* URL Input Section */}
-        <div className="mb-6">
-          <input
-            type="text"
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
-            placeholder={placeholder}
-            className="w-full px-6 py-4 text-lg border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:outline-none text-gray-800"
-            disabled={loading || videoInfo !== null}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' && !videoInfo) fetchVideoInfo();
-            }}
-          />
-        </div>
+    <>
+      <div className="max-w-4xl mx-auto">
+        <div className="bg-white rounded-2xl shadow-2xl p-8">
+          {/* URL Input Section */}
+          <div className="mb-6">
+            <input
+              type="text"
+              value={url}
+              onChange={(e) => setUrl(e.target.value)}
+              placeholder={placeholder}
+              className="w-full px-6 py-4 text-lg border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:outline-none text-gray-800"
+              disabled={loading}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && !loading) fetchVideoInfo();
+              }}
+            />
+          </div>
 
-        {/* Fetch Button */}
-        {!videoInfo && (
+          {/* Fetch Button */}
           <button
             onClick={fetchVideoInfo}
             disabled={loading}
@@ -259,256 +233,279 @@ export default function DownloadForm({ platform = 'all' }) {
               </>
             )}
           </button>
-        )}
 
-        {/* Error Message */}
-        {error && (
-          <div className="flex items-center gap-2 text-red-600 bg-red-50 p-4 rounded-lg mt-4">
-            <AlertCircle size={20} />
-            <span>{error}</span>
-          </div>
-        )}
-
-        {/* Success Message */}
-        {downloadSuccess && (
-          <div className="flex flex-col gap-2 text-green-600 bg-green-50 p-4 rounded-lg mt-4">
-            <div className="flex items-center gap-2">
-              <CheckCircle size={20} />
-              <span className="font-semibold">Download started successfully!</span>
-            </div>
-            <p className="text-sm text-green-700 ml-7">
-              Your video is downloading. If it does not start automatically, click the link below.
-            </p>
-            {downloadUrl && (
-              <a
-                href={downloadUrl}
-                onClick={manualDownload}
-                className="text-sm text-indigo-600 hover:text-indigo-800 underline ml-7 mt-1"
-              >
-                Click here to download manually →
-              </a>
-            )}
-          </div>
-        )}
-
-        {/* Video Information Display */}
-        {videoInfo && (
-          <div className="mt-6 space-y-6">
-            {/* Video Preview Card */}
-            <div className="border-2 border-gray-200 rounded-xl overflow-hidden">
-              {videoInfo.thumbnail && (
-                <div className="relative aspect-video bg-gradient-to-br from-gray-900 to-gray-800">
-                  <img
-                    src={videoInfo.thumbnail}
-                    alt={videoInfo.title || 'Video thumbnail'}
-                    className="w-full h-full object-contain"
-                    onError={(e) => {
-                      e.target.style.display = 'none';
-                    }}
-                  />
-                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <div className="w-20 h-20 bg-white bg-opacity-90 rounded-full flex items-center justify-center shadow-2xl">
-                      <svg className="w-10 h-10 text-indigo-600 ml-1" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
-                    <p className="text-white text-sm opacity-90">Preview only - Click "Download Video" below to save</p>
-                  </div>
-                </div>
-              )}
-
-              <div className="p-6 bg-gradient-to-br from-gray-50 to-white">
-                {videoInfo.title && (
-                  <h3 className="font-bold text-xl text-gray-800 mb-3 line-clamp-2">{videoInfo.title}</h3>
-                )}
-
-                <div className="flex flex-wrap gap-4 mb-4">
-                  {videoInfo.platform && (
-                    <div className="flex items-center gap-2 text-sm">
-                      <span className="font-semibold text-gray-600">Platform:</span>
-                      <span className="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full font-medium capitalize">
-                        {videoInfo.platform}
-                      </span>
-                    </div>
-                  )}
-
-                  {videoInfo.duration && (
-                    <div className="flex items-center gap-2 text-sm">
-                      <Clock size={16} className="text-gray-500" />
-                      <span className="text-gray-700 font-medium">{formatDuration(videoInfo.duration)}</span>
-                    </div>
-                  )}
-
-                  {videoInfo.view_count && (
-                    <div className="flex items-center gap-2 text-sm">
-                      <Eye size={16} className="text-gray-500" />
-                      <span className="text-gray-700 font-medium">{videoInfo.view_count.toLocaleString()} views</span>
-                    </div>
-                  )}
-
-                  {videoInfo.filesize && (
-                    <div className="flex items-center gap-2 text-sm">
-                      <span className="font-semibold text-gray-600">Size:</span>
-                      <span className="text-gray-700 font-medium">{formatFileSize(videoInfo.filesize)}</span>
-                    </div>
-                  )}
-                </div>
-
-                {videoInfo.uploader && (
-                  <p className="text-sm text-gray-600 mb-4">
-                    <span className="font-semibold">Uploader:</span> {videoInfo.uploader}
-                  </p>
-                )}
-
-                {videoInfo.description && <p className="text-sm text-gray-600 line-clamp-3">{videoInfo.description}</p>}
+          {/* Feature Cards */}
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-xl p-6 text-center">
+              <div className="w-12 h-12 bg-indigo-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                <Download className="text-white" size={24} />
               </div>
+              <h3 className="font-semibold text-gray-800 mb-2">Direct Downloads</h3>
+              <p className="text-sm text-gray-600">No storage on our servers. Ultra-fast streaming.</p>
             </div>
 
-            {/* Download Controls */}
-            <div className="border-2 border-gray-200 rounded-xl p-6 bg-gradient-to-br from-indigo-50 to-purple-50">
-              <h4 className="font-semibold text-lg text-gray-800 mb-4 flex items-center gap-2">
-                <Download size={20} className="text-indigo-600" />
-                Download Options
-              </h4>
-
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4 flex items-start gap-3">
-                <Info size={20} className="text-blue-600 flex-shrink-0 mt-0.5" />
-                <div className="text-sm">
-                  <p className="text-blue-800 font-medium mb-1">Direct Download - No Server Storage</p>
-                  <p className="text-blue-700">
-                    Videos are streamed directly from the platform to your device. Nothing is stored on our servers.
-                  </p>
-                </div>
+            <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-6 text-center">
+              <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                <Video className="text-white" size={24} />
               </div>
-
-              <div className="flex flex-col md:flex-row gap-4">
-                <div className="relative flex-1">
-                  <select
-                    value={quality}
-                    onChange={(e) => setQuality(e.target.value)}
-                    className="appearance-none w-full px-6 py-4 pr-12 border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:outline-none bg-white text-gray-800 font-medium cursor-pointer hover:border-gray-300 transition"
-                  >
-                    {qualityOptions.map((option) => (
-                      <option key={option.value} value={option.value}>
-                        {option.label}
-                      </option>
-                    ))}
-                  </select>
-                  <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                    <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </div>
-                </div>
-
-                <button
-                  onClick={handleDownload}
-                  disabled={downloading}
-                  className="flex-1 bg-gradient-to-r from-green-600 to-emerald-600 text-white px-8 py-4 rounded-xl font-semibold hover:shadow-xl hover:from-green-700 hover:to-emerald-700 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-                >
-                  {downloading ? (
-                    <>
-                      <Loader className="animate-spin" size={20} />
-                      Preparing...
-                    </>
-                  ) : (
-                    <>
-                      <Download size={20} />
-                      Download Video
-                    </>
-                  )}
-                </button>
-              </div>
-
-              {videoInfo.formats && videoInfo.formats.length > 0 && (
-                <div className="mt-4 p-4 bg-white rounded-lg border border-gray-200">
-                  <p className="text-sm font-semibold text-gray-700 mb-2">Available Formats: {videoInfo.formats.length}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {videoInfo.formats.slice(0, 6).map((format, index) => (
-                      <span key={index} className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
-                        {format.resolution || format.quality} • {format.ext}
-                      </span>
-                    ))}
-                    {videoInfo.formats.length > 6 && (
-                      <span className="text-xs text-gray-500 px-2 py-1">+{videoInfo.formats.length - 6} more</span>
-                    )}
-                  </div>
-                </div>
-              )}
-
-              <button
-                onClick={resetForm}
-                className="w-full mt-4 text-indigo-600 hover:text-indigo-800 py-3 text-sm font-medium transition border-2 border-indigo-200 rounded-lg hover:border-indigo-300 hover:bg-indigo-50"
-              >
-                Download Another Video
-              </button>
+              <h3 className="font-semibold text-gray-800 mb-2">Multiple Qualities</h3>
+              <p className="text-sm text-gray-600">Choose from 360p to 1080p quality options.</p>
             </div>
 
-            <details className="border-2 border-gray-200 rounded-xl overflow-hidden">
-              <summary className="px-6 py-4 bg-gray-50 cursor-pointer hover:bg-gray-100 transition font-medium text-gray-700 flex items-center justify-between">
-                <span>Technical Details</span>
-                <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </summary>
-              <div className="px-6 py-4 space-y-2 text-sm text-gray-600 bg-white">
-                <p>
-                  <strong>Video ID:</strong> {videoInfo.id || 'N/A'}
-                </p>
-                <p>
-                  <strong>Upload Date:</strong> {videoInfo.upload_date || 'N/A'}
-                </p>
-                <p>
-                  <strong>File Extension:</strong> {videoInfo.ext || 'mp4'}
-                </p>
-                {videoInfo.webpage_url && (
-                  <p>
-                    <strong>Source URL:</strong>{' '}
-                    <a
-                      href={videoInfo.webpage_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-indigo-600 hover:underline break-all"
-                    >
-                      {videoInfo.webpage_url}
-                    </a>
-                  </p>
-                )}
+            <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6 text-center">
+              <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                <CheckCircle className="text-white" size={24} />
               </div>
-            </details>
+              <h3 className="font-semibold text-gray-800 mb-2">All Platforms</h3>
+              <p className="text-sm text-gray-600">YouTube, Instagram, TikTok, Facebook & more.</p>
+            </div>
           </div>
-        )}
+        </div>
       </div>
 
-      {!videoInfo && (
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="bg-white rounded-xl p-6 shadow-lg text-center">
-            <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-3">
-              <Download className="text-indigo-600" size={24} />
-            </div>
-            <h3 className="font-semibold text-gray-800 mb-2">Direct Downloads</h3>
-            <p className="text-sm text-gray-600">No storage on our servers. Ultra-fast proxy streaming.</p>
-          </div>
+      {/* Beautiful Modal Popup */}
+      {showModal && (
+        <div className="fixed inset-0 z-50 overflow-y-auto">
+          {/* Backdrop */}
+          <div 
+            className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm transition-opacity"
+            onClick={() => !loading && !downloading && setShowModal(false)}
+          />
+          
+          {/* Modal Container */}
+          <div className="flex min-h-full items-center justify-center p-4">
+            <div 
+              className="relative bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto transform transition-all animate-slideUp"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              {!loading && !downloading && (
+                <button
+                  onClick={() => setShowModal(false)}
+                  className="absolute top-4 right-4 z-10 p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition"
+                >
+                  <X size={20} className="text-gray-600" />
+                </button>
+              )}
 
-          <div className="bg-white rounded-xl p-6 shadow-lg text-center">
-            <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
-              <Video className="text-purple-600" size={24} />
-            </div>
-            <h3 className="font-semibold text-gray-800 mb-2">Multiple Qualities</h3>
-            <p className="text-sm text-gray-600">Choose from 360p to 1080p quality options.</p>
-          </div>
+              {/* Loading State with Beautiful Animation */}
+              {loading && (
+                <div className="p-12 text-center">
+                  <div className="relative w-32 h-32 mx-auto mb-6">
+                    {/* Animated Rings */}
+                    <div className="absolute inset-0 border-4 border-indigo-200 rounded-full animate-ping" />
+                    <div className="absolute inset-2 border-4 border-purple-200 rounded-full animate-pulse" />
+                    <div className="absolute inset-4 border-4 border-indigo-300 rounded-full animate-spin" />
+                    
+                    {/* Center Icon */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <Video className="text-indigo-600 animate-bounce" size={48} />
+                    </div>
+                  </div>
+                  
+                  <h3 className="text-2xl font-bold text-gray-800 mb-2 animate-pulse">
+                    Fetching Video Information
+                  </h3>
+                  <p className="text-gray-600">Please wait while we retrieve video details...</p>
+                  
+                  {/* Progress Dots */}
+                  <div className="flex justify-center gap-2 mt-6">
+                    <div className="w-3 h-3 bg-indigo-600 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                    <div className="w-3 h-3 bg-purple-600 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                    <div className="w-3 h-3 bg-indigo-600 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                  </div>
+                </div>
+              )}
 
-          <div className="bg-white rounded-xl p-6 shadow-lg text-center">
-            <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
-              <CheckCircle className="text-green-600" size={24} />
+              {/* Error State */}
+              {error && !loading && (
+                <div className="p-8">
+                  <div className="flex flex-col items-center text-center">
+                    <div className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mb-4">
+                      <AlertCircle className="text-red-600" size={40} />
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-800 mb-2">Oops! Something went wrong</h3>
+                    <p className="text-red-600 mb-6">{error}</p>
+                    <button
+                      onClick={() => {
+                        setError('');
+                        setShowModal(false);
+                      }}
+                      className="px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl font-semibold hover:shadow-lg transition"
+                    >
+                      Try Again
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* Success State - Video Info */}
+              {videoInfo && !loading && !error && (
+                <div className="p-8">
+                  {/* Success Message */}
+                  {downloadSuccess && (
+                    <div className="mb-6 bg-green-50 border-2 border-green-200 rounded-xl p-4 animate-slideDown">
+                      <div className="flex items-center gap-3">
+                        <div className="flex-shrink-0">
+                          <div className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center">
+                            <CheckCircle className="text-white" size={20} />
+                          </div>
+                        </div>
+                        <div className="flex-1">
+                          <h4 className="font-semibold text-green-800 mb-1">Download Started!</h4>
+                          <p className="text-sm text-green-700">
+                            Your video is downloading. If it doesn't start automatically, 
+                            <a href={downloadUrl} onClick={manualDownload} className="underline ml-1 font-medium">
+                              click here
+                            </a>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Video Preview */}
+                  {videoInfo.thumbnail && (
+                    <div className="mb-6 rounded-xl overflow-hidden border-2 border-gray-200">
+                      <div className="relative aspect-video bg-gradient-to-br from-gray-900 to-gray-800">
+                        <img
+                          src={videoInfo.thumbnail}
+                          alt={videoInfo.title || 'Video thumbnail'}
+                          className="w-full h-full object-contain"
+                        />
+                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                          <div className="w-20 h-20 bg-white bg-opacity-90 rounded-full flex items-center justify-center shadow-2xl">
+                            <svg className="w-10 h-10 text-indigo-600 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M8 5v14l11-7z" />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Video Title */}
+                  {videoInfo.title && (
+                    <h2 className="text-2xl font-bold text-gray-800 mb-4 line-clamp-2">{videoInfo.title}</h2>
+                  )}
+
+                  {/* Video Stats */}
+                  <div className="flex flex-wrap gap-3 mb-6">
+                    {videoInfo.platform && (
+                      <span className="px-4 py-2 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium capitalize">
+                        {videoInfo.platform}
+                      </span>
+                    )}
+                    {videoInfo.duration && (
+                      <span className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium flex items-center gap-2">
+                        <Clock size={16} />
+                        {formatDuration(videoInfo.duration)}
+                      </span>
+                    )}
+                    {videoInfo.view_count && (
+                      <span className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium flex items-center gap-2">
+                        <Eye size={16} />
+                        {videoInfo.view_count.toLocaleString()}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Download Section */}
+                  <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl p-6 mb-4">
+                    <h3 className="font-semibold text-lg mb-4 flex items-center gap-2">
+                      <Download className="text-indigo-600" size={20} />
+                      Download Options
+                    </h3>
+
+                    <div className="flex flex-col sm:flex-row gap-4">
+                      {/* Quality Selector */}
+                      <div className="flex-1">
+                        <select
+                          value={quality}
+                          onChange={(e) => setQuality(e.target.value)}
+                          className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-indigo-500 focus:outline-none bg-white text-gray-800 font-medium"
+                        >
+                          {qualityOptions.map((option) => (
+                            <option key={option.value} value={option.value}>
+                              {option.label}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+
+                      {/* Download Button */}
+                      <button
+                        onClick={handleDownload}
+                        disabled={downloading}
+                        className="flex-1 bg-gradient-to-r from-green-600 to-emerald-600 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-xl hover:from-green-700 hover:to-emerald-700 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                      >
+                        {downloading ? (
+                          <>
+                            <Loader className="animate-spin" size={20} />
+                            Preparing...
+                          </>
+                        ) : (
+                          <>
+                            <Download size={20} />
+                            Download Video
+                          </>
+                        )}
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Additional Info */}
+                  {videoInfo.uploader && (
+                    <p className="text-sm text-gray-600 mb-4">
+                      <span className="font-semibold">Uploader:</span> {videoInfo.uploader}
+                    </p>
+                  )}
+
+                  {/* Reset Button */}
+                  <button
+                    onClick={resetForm}
+                    className="w-full text-indigo-600 hover:text-indigo-800 py-3 text-sm font-medium transition border-2 border-indigo-200 rounded-lg hover:border-indigo-300 hover:bg-indigo-50"
+                  >
+                    Download Another Video
+                  </button>
+                </div>
+              )}
             </div>
-            <h3 className="font-semibold text-gray-800 mb-2">All Platforms</h3>
-            <p className="text-sm text-gray-600">YouTube, Instagram, TikTok, Facebook & more.</p>
           </div>
         </div>
       )}
-    </div>
+
+      <style jsx>{`
+        @keyframes slideUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes slideDown {
+          from {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .animate-slideUp {
+          animation: slideUp 0.3s ease-out;
+        }
+
+        .animate-slideDown {
+          animation: slideDown 0.3s ease-out;
+        }
+      `}</style>
+    </>
   );
 }
