@@ -3,7 +3,11 @@ import DownloadForm from '@/components/DownloadForm';
 export const metadata = {
   title: 'Facebook Video Downloader - Download FB Videos, Reels Free HD',
   description: 'Free Facebook video downloader. Download Facebook videos, Reels, Watch content in HD quality. Fast, safe, no login required.',
-  keywords: ['facebook video downloader', 'download facebook videos', 'fb video download', 'facebook reels downloader']
+  keywords: ['facebook video downloader', 'download facebook videos', 'fb video download', 'facebook reels downloader'],
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function FacebookDownloader() {

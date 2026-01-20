@@ -1,6 +1,10 @@
 export const metadata = {
   title: 'About SocialPully- Free Video Downloader for All Social Media',
   description: 'Learn about SocialPully, the best free video downloader for Instagram, TikTok, Facebook, YouTube and 15+ platforms. Our mission is to make video downloading simple and accessible.',
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function AboutPage() {

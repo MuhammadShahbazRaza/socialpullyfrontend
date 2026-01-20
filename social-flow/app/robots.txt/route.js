@@ -1,7 +1,6 @@
 export async function GET() {
   const robots = `User-agent: *
-Allow: /
-Sitemap: https://SocialPully.com/sitemap.xml`;
+Disallow: /`;
 
   return new Response(robots, {
     headers: {

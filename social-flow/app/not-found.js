@@ -4,6 +4,10 @@ import { Home, Search } from 'lucide-react';
 export const metadata = {
   title: '404 - Page Not Found | SocialPully',
   description: 'The page you are looking for does not exist.',
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function NotFound() {

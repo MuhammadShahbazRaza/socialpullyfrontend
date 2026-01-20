@@ -5,6 +5,10 @@ import { Instagram, Facebook, Music, Youtube, Twitter, Mail } from 'lucide-react
 export const metadata = {
   title: 'Free Video Downloader - Instagram, TikTok, Facebook, YouTube',
   description: 'Download videos from Instagram Reels, TikTok, Facebook, YouTube in HD quality. Free, fast, no watermark. Support for 15+ social media platforms.',
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 const platforms = [

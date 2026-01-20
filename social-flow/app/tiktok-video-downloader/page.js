@@ -3,6 +3,10 @@ import DownloadForm from '@/components/DownloadForm';
 export const metadata = {
   title: 'TikTok Video Downloader - Download TikTok Videos Without Watermark Free',
   description: 'Free TikTok video downloader. Save TikTok videos without watermark in HD, 4K quality. No app, no login required. Fast TikTok download online.',
+  robots: {
+    index: false,
+    follow: false,
+  },
   keywords: ['tiktok video downloader', 'download tiktok videos', 'tiktok downloader no watermark', 'save tiktok videos', 'tiktok mp4 download'],
 };
 

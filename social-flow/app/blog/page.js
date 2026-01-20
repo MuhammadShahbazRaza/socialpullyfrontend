@@ -7,7 +7,11 @@ import { getAllBlogPosts } from '@/lib/blog-posts';
 export const metadata = {
   title: 'Blog - Video Download Tips, Guides & Tutorials | SocialPully',
   description: 'Learn how to download videos from Instagram, TikTok, Facebook, YouTube. Tips, guides, and tutorials for social media video downloads.',
-  keywords: ['video download guide', 'instagram tips', 'tiktok tutorials', 'social media guides']
+  keywords: ['video download guide', 'instagram tips', 'tiktok tutorials', 'social media guides'],
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function BlogIndex() {

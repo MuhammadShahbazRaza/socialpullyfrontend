@@ -16,6 +16,10 @@ export const metadata = {
   },
   description: 'Download videos from Instagram Reels, TikTok, Facebook, YouTube, Twitter and 15+ platforms. Free, fast, HD quality, no watermark. Best online video downloader 2024.',
   keywords: ['instagram reel downloader', 'tiktok video downloader', 'facebook video download', 'youtube downloader', 'social media video downloader', 'video downloader online', 'download instagram reels', 'download tiktok videos', 'fb video downloader'],
+  robots: {
+    index: false,
+    follow: false,
+  },
   authors: [{ name: 'SocialPully' }],
   creator: 'SocialPully',
   publisher: 'SocialPully',

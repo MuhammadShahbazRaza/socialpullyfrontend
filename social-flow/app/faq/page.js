@@ -4,7 +4,11 @@ import { generateFAQSchema } from '@/lib/schema';
 export const metadata = {
   title: 'FAQ - Frequently Asked Questions | SocialPully Video Downloader',
   description: 'Get answers to common questions about downloading videos from Instagram, TikTok, Facebook, YouTube. Free support and guides.',
-  keywords: ['video downloader faq', 'how to download videos', 'instagram downloader help', 'tiktok downloader questions']
+  keywords: ['video downloader faq', 'how to download videos', 'instagram downloader help', 'tiktok downloader questions'],
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 const faqs = [

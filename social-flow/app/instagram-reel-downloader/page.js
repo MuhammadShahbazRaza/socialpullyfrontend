@@ -6,6 +6,10 @@ import DownloadForm from '@/components/DownloadForm';
 export const metadata = {
   title: 'Instagram Reel Downloader - Download Instagram Reels, Stories & Videos Free',
   description: 'Free Instagram Reel Downloader. Download Instagram Reels, Stories, IGTV videos in HD quality without watermark. Fast, safe, and no app required.',
+  robots: {
+    index: false,
+    follow: false,
+  },
   keywords: ['instagram reel downloader', 'download instagram reels', 'instagram video downloader', 'ig reel download', 'instagram story downloader', 'save instagram reels'],
   openGraph: {
     title: 'Instagram Reel Downloader - Download IG Reels Free',

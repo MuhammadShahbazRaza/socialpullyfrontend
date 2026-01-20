@@ -3,7 +3,11 @@ import DownloadForm from '@/components/DownloadForm';
 export const metadata = {
   title: 'YouTube Video Downloader - Download YouTube Videos & Shorts Free',
   description: 'Free YouTube video downloader. Save YouTube videos and Shorts in HD, 4K quality. Fast YouTube to MP4 converter. No software needed.',
-  keywords: ['youtube downloader', 'download youtube videos', 'youtube to mp4', 'youtube shorts downloader']
+  keywords: ['youtube downloader', 'download youtube videos', 'youtube to mp4', 'youtube shorts downloader'],
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function YouTubeDownloader() {
