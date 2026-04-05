@@ -38,11 +38,7 @@ export default function Home() {
       </section>
 
       {/* Ad Space */}
-      <div className="container mx-auto px-4 my-8">
-        <div className="bg-gray-100 h-24 flex items-center justify-center text-gray-400">
-          Google AdSense Banner 728x90
-        </div>
-      </div>
+     
 
       {/* Platforms Section */}
       <section className="py-16 bg-white">
@@ -91,11 +87,7 @@ export default function Home() {
       </section>
 
       {/* Ad Space */}
-      <div className="container mx-auto px-4 my-8">
-        <div className="bg-gray-100 h-64 flex items-center justify-center text-gray-400">
-          Google AdSense Large Rectangle 336x280
-        </div>
-      </div>
+      
     </div>
   );
 }

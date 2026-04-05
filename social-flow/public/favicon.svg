@@ -6,5 +6,9 @@
     </linearGradient>
   </defs>
   <rect width="64" height="64" rx="14" fill="url(#bg)"/>
-  <text x="32" y="44" font-family="Arial Black, sans-serif" font-size="32" font-weight="900" text-anchor="middle" fill="white">S</text>
+  <!-- Down arrow -->
+  <line x1="32" y1="14" x2="32" y2="40" stroke="white" stroke-width="5.5" stroke-linecap="round"/>
+  <polyline points="20,30 32,43 44,30" fill="none" stroke="white" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Tray/base line -->
+  <line x1="18" y1="50" x2="46" y2="50" stroke="white" stroke-width="5.5" stroke-linecap="round"/>
 </svg>

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Download, Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
-// Inline SocialPully logo — no image file dependency
+// Inline SocialPully logo — download arrow icon
 function SocialPullyLogo({ size = 32 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
@@ -14,10 +14,12 @@ function SocialPullyLogo({ size = 32 }) {
         </linearGradient>
       </defs>
       <rect width="64" height="64" rx="14" fill="url(#navLogoGrad)" />
-      <path
-        d="M32 16c-5.5 0-10 3.1-10 8 0 3.8 2.8 6.2 7 7.5l4 1.2c2.5 0.8 3.5 1.8 3.5 3.3 0 1.8-1.8 3-4.5 3-2.8 0-5-1.3-6.2-3.5l-4.5 2.6C22.9 42.3 27 45 32.5 45c6 0 10.5-3.3 10.5-8.5 0-4-2.8-6.5-7.5-8l-3.8-1.1c-2.2-0.7-3.2-1.6-3.2-3 0-1.6 1.6-2.7 4-2.7 2.2 0 4 1 5.2 2.8l4.3-2.5C40.3 18.8 36.6 16 32 16z"
-        fill="white"
-      />
+      {/* Arrow shaft */}
+      <line x1="32" y1="13" x2="32" y2="39" stroke="white" strokeWidth="5.5" strokeLinecap="round"/>
+      {/* Arrow head */}
+      <polyline points="20,29 32,43 44,29" fill="none" stroke="white" strokeWidth="5.5" strokeLinecap="round" strokeLinejoin="round"/>
+      {/* Tray */}
+      <line x1="17" y1="51" x2="47" y2="51" stroke="white" strokeWidth="5.5" strokeLinecap="round"/>
     </svg>
   );
 }
