@@ -2,11 +2,11 @@ export const generateWebsiteSchema = () => ({
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: 'SocialPully',
-  url: 'https://SocialPully.com',
+  url: 'https://socialpully.com',
   description: 'Free video downloader for Instagram, TikTok, Facebook, YouTube',
   potentialAction: {
     '@type': 'SearchAction',
-    target: 'https://SocialPully.com/?q={search_term_string}',
+    target: 'https://socialpully.com/?q={search_term_string}',
     'query-input': 'required name=search_term_string'
   }
 });
@@ -15,8 +15,8 @@ export const generateOrganizationSchema = () => ({
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'SocialPully',
-  url: 'https://SocialPully.com',
-  logo: 'https://SocialPully.com/logo.png',
+  url: 'https://socialpully.com',
+  logo: 'https://socialpully.com/logo.png',
   sameAs: [
     'https://twitter.com/SocialPully',
     'https://facebook.com/SocialPully',
@@ -47,7 +47,7 @@ export const generateSoftwareApplicationSchema = () => ({
     worstRating: '1'
   },
   description: 'Free online video downloader for Instagram Reels, TikTok, Facebook, YouTube',
-  screenshot: 'https://SocialPully.com/screenshot.jpg'
+  screenshot: 'https://socialpully.com/screenshot.jpg'
 });
 
 export const generateHowToSchema = (platform) => {
@@ -122,7 +122,7 @@ export const generateArticleSchema = (article) => ({
     name: 'SocialPully',
     logo: {
       '@type': 'ImageObject',
-      url: 'https://SocialPully.com/logo.png'
+      url: 'https://socialpully.com/logo.png'
     }
   }
 });

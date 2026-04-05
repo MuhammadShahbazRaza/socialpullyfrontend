@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: 'SocialPully',
   description: 'Free video downloader for Instagram, TikTok, Facebook, YouTube',
-  url: 'https://SocialPully.com',
-  ogImage: 'https://SocialPully.com/og-image.jpg',
+  url: 'https://socialpully.com',
+  ogImage: 'https://socialpully.com/og-image.jpg',
   links: {
     twitter: 'https://twitter.com/SocialPully',
     facebook: 'https://facebook.com/SocialPully',
