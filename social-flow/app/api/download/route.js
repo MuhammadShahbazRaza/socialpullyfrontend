@@ -5,7 +5,7 @@ export async function POST(request) {
     const { url, resolution } = await request.json();
 
     // Call your Python backend API
-    const response = await fetch('https://5642bb9f6735.ngrok-free.app/api/download/', {
+    const response = await fetch('https://socialpullybackend-production.up.railway.app/api/download/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ url, resolution })
