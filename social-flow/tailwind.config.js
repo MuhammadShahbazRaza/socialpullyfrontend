@@ -8,8 +8,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Plus Jakarta Sans', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
-        display: ['Syne', 'sans-serif'],
+        sans: ['Nunito', 'Segoe UI', 'system-ui', 'sans-serif'],
+        display: ['Outfit', 'Segoe UI', 'system-ui', 'sans-serif'],
+        heading: ['Outfit', 'Segoe UI', 'system-ui', 'sans-serif'],
+        body: ['Nunito', 'Segoe UI', 'system-ui', 'sans-serif'],
       },
       colors: {
         tiktok: {

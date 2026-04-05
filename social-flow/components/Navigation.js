@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { Download, Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
-// Inline SocialPully logo — download arrow icon
 function SocialPullyLogo({ size = 32 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
@@ -14,19 +13,29 @@ function SocialPullyLogo({ size = 32 }) {
         </linearGradient>
       </defs>
       <rect width="64" height="64" rx="14" fill="url(#navLogoGrad)" />
-      {/* Arrow shaft */}
       <line x1="32" y1="13" x2="32" y2="39" stroke="white" strokeWidth="5.5" strokeLinecap="round"/>
-      {/* Arrow head */}
       <polyline points="20,29 32,43 44,29" fill="none" stroke="white" strokeWidth="5.5" strokeLinecap="round" strokeLinejoin="round"/>
-      {/* Tray */}
       <line x1="17" y1="51" x2="47" y2="51" stroke="white" strokeWidth="5.5" strokeLinecap="round"/>
     </svg>
   );
 }
 
+const FONT = "'Outfit', sans-serif";
+
+const navLinks = [
+  { href: '/instagram-reel-downloader', label: 'Instagram', icon: '📸' },
+  { href: '/tiktok-video-downloader', label: 'TikTok', icon: '🎵' },
+  { href: '/twitter-video-downloader', label: 'Twitter', icon: '🐦' },
+  { href: '/pinterest-video-downloader', label: 'Pinterest', icon: '📌' },
+  { href: '/facebook-video-downloader', label: 'Facebook', icon: '📘' },
+  { href: '/youtube-video-downloader', label: 'YouTube', icon: '▶️' },
+  { href: '/blog', label: 'Blog', icon: null },
+];
+
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -34,12 +43,18 @@ export default function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
+  // Main visible nav links (show first 4 platforms + Blog)
+  const primaryLinks = [
     { href: '/instagram-reel-downloader', label: 'Instagram', icon: '📸' },
     { href: '/tiktok-video-downloader', label: 'TikTok', icon: '🎵' },
+    { href: '/twitter-video-downloader', label: 'Twitter', icon: '🐦' },
+    { href: '/pinterest-video-downloader', label: 'Pinterest', icon: '📌' },
+    { href: '/blog', label: 'Blog', icon: null },
+  ];
+
+  const moreLinks = [
     { href: '/facebook-video-downloader', label: 'Facebook', icon: '📘' },
     { href: '/youtube-video-downloader', label: 'YouTube', icon: '▶️' },
-    { href: '/blog', label: 'Blog', icon: null },
     { href: '/about', label: 'About', icon: null },
   ];
 
@@ -56,42 +71,44 @@ export default function Navigation() {
       }}
     >
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center py-4">
+        <div className="flex justify-between items-center py-3">
 
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2" style={{ textDecoration: 'none' }}>
-            <SocialPullyLogo size={36} />
+          <Link href="/" className="flex items-center gap-2" style={{ textDecoration: 'none', flexShrink: 0 }}>
+            <SocialPullyLogo size={34} />
             <span style={{
-              fontFamily: "'Syne', sans-serif",
+              fontFamily: FONT,
               fontWeight: 800,
-              fontSize: '1.45rem',
+              fontSize: '1.35rem',
               background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
-              letterSpacing: '-0.01em',
+              letterSpacing: '-0.02em',
             }}>
               SocialPully
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
+          <div className="hidden lg:flex items-center gap-1" style={{ position: 'relative' }}>
+            {primaryLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 style={{
-                  padding: '6px 14px',
+                  padding: '6px 12px',
                   borderRadius: '8px',
-                  fontSize: '0.875rem',
-                  fontWeight: 500,
+                  fontSize: '0.845rem',
+                  fontFamily: FONT,
+                  fontWeight: 600,
                   color: '#374151',
                   transition: 'all 0.2s',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '5px',
                   textDecoration: 'none',
+                  whiteSpace: 'nowrap',
                 }}
                 className="hover:bg-indigo-50 hover:text-indigo-600"
               >
@@ -99,6 +116,70 @@ export default function Navigation() {
                 {link.label}
               </Link>
             ))}
+
+            {/* More dropdown */}
+            <div style={{ position: 'relative' }}>
+              <button
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+                onBlur={() => setTimeout(() => setDropdownOpen(false), 150)}
+                style={{
+                  padding: '6px 12px',
+                  borderRadius: '8px',
+                  fontSize: '0.845rem',
+                  fontFamily: FONT,
+                  fontWeight: 600,
+                  color: '#374151',
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '4px',
+                  transition: 'all 0.2s',
+                }}
+                className="hover:bg-indigo-50 hover:text-indigo-600"
+              >
+                More <span style={{ fontSize: '0.7rem' }}>▾</span>
+              </button>
+              {dropdownOpen && (
+                <div style={{
+                  position: 'absolute',
+                  top: 'calc(100% + 6px)',
+                  right: 0,
+                  background: '#fff',
+                  border: '1px solid #e5e7eb',
+                  borderRadius: '12px',
+                  boxShadow: '0 8px 30px rgba(0,0,0,0.12)',
+                  padding: '6px',
+                  minWidth: '160px',
+                  zIndex: 100,
+                }}>
+                  {moreLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '8px',
+                        padding: '8px 12px',
+                        borderRadius: '8px',
+                        fontSize: '0.875rem',
+                        fontFamily: FONT,
+                        fontWeight: 600,
+                        color: '#374151',
+                        textDecoration: 'none',
+                        transition: 'all 0.15s',
+                      }}
+                      className="hover:bg-indigo-50 hover:text-indigo-600"
+                    >
+                      {link.icon && <span style={{ fontSize: '0.85rem' }}>{link.icon}</span>}
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
 
           {/* CTA + Mobile toggle */}
@@ -111,20 +192,23 @@ export default function Navigation() {
                 color: 'white',
                 padding: '8px 18px',
                 borderRadius: '10px',
-                fontSize: '0.875rem',
-                fontWeight: 600,
+                fontSize: '0.845rem',
+                fontFamily: FONT,
+                fontWeight: 700,
                 transition: 'all 0.2s',
                 boxShadow: '0 4px 15px rgba(99,102,241,0.3)',
                 textDecoration: 'none',
+                whiteSpace: 'nowrap',
               }}
             >
-              <Download size={16} />
+              <Download size={15} />
               Download Free
             </Link>
             <button
-              className="md:hidden p-2 rounded-lg hover:bg-gray-100"
+              className="lg:hidden p-2 rounded-lg hover:bg-gray-100"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
+              style={{ border: 'none', cursor: 'pointer', background: 'none' }}
             >
               {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
@@ -133,7 +217,7 @@ export default function Navigation() {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div style={{ borderTop: '1px solid #f3f4f6', paddingBottom: '12px', paddingTop: '8px' }}>
+          <div style={{ borderTop: '1px solid #f3f4f6', paddingBottom: '14px', paddingTop: '8px' }}>
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -141,10 +225,11 @@ export default function Navigation() {
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '8px',
-                  padding: '10px 8px',
+                  gap: '10px',
+                  padding: '11px 8px',
                   color: '#374151',
-                  fontWeight: 500,
+                  fontFamily: FONT,
+                  fontWeight: 600,
                   borderRadius: '8px',
                   fontSize: '0.9rem',
                   textDecoration: 'none',
@@ -152,10 +237,18 @@ export default function Navigation() {
                 className="hover:bg-indigo-50 hover:text-indigo-600"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                {link.icon && <span>{link.icon}</span>}
+                {link.icon && <span style={{ fontSize: '1rem' }}>{link.icon}</span>}
                 {link.label}
               </Link>
             ))}
+            <Link
+              href="/about"
+              style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '11px 8px', color: '#374151', fontFamily: FONT, fontWeight: 600, borderRadius: '8px', fontSize: '0.9rem', textDecoration: 'none' }}
+              className="hover:bg-indigo-50 hover:text-indigo-600"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              About
+            </Link>
             <Link
               href="/tiktok-video-downloader"
               style={{
@@ -165,10 +258,11 @@ export default function Navigation() {
                 gap: '8px',
                 background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
                 color: 'white',
-                padding: '12px',
+                padding: '13px',
                 borderRadius: '10px',
-                fontWeight: 600,
-                marginTop: '8px',
+                fontFamily: FONT,
+                fontWeight: 700,
+                marginTop: '10px',
                 textDecoration: 'none',
               }}
               onClick={() => setMobileMenuOpen(false)}

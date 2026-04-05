@@ -64,7 +64,7 @@ export default function Footer() {
               <Link href="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', marginBottom: '16px', textDecoration: 'none' }}>
                 <SocialPullyLogo size={38} />
                 <span style={{
-                  fontFamily: "'Syne', sans-serif",
+                  fontFamily: "'Outfit', sans-serif",
                   fontWeight: 800,
                   fontSize: '1.4rem',
                   background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
@@ -101,7 +101,7 @@ export default function Footer() {
             {Object.entries(footerLinks).map(([category, links]) => (
               <div key={category}>
                 <h3 style={{
-                  fontFamily: "'Syne', sans-serif",
+                  fontFamily: "'Outfit', sans-serif",
                   fontWeight: 700,
                   marginBottom: '16px',
                   fontSize: '0.8rem',

@@ -174,7 +174,7 @@ export default function TikTokDownloader() {
 
           {/* H1 */}
           <h1 style={{
-            fontFamily: "'Syne', sans-serif",
+            fontFamily: "'Outfit', sans-serif",
             fontWeight: 800,
             fontSize: 'clamp(2.2rem, 5vw, 3.8rem)',
             textAlign: 'center',
@@ -230,7 +230,7 @@ export default function TikTokDownloader() {
             {stats.map(({ value, label }) => (
               <div key={label} style={{ textAlign: 'center' }}>
                 <div style={{
-                  fontFamily: "'Syne', sans-serif",
+                  fontFamily: "'Outfit', sans-serif",
                   fontWeight: 800,
                   fontSize: '1.8rem',
                   color: '#fff',
@@ -273,7 +273,7 @@ export default function TikTokDownloader() {
                 About This Tool
               </div>
               <h2 style={{
-                fontFamily: "'Syne', sans-serif",
+                fontFamily: "'Outfit', sans-serif",
                 fontWeight: 800,
                 fontSize: 'clamp(1.6rem, 3vw, 2.2rem)',
                 marginBottom: '20px',
@@ -334,7 +334,7 @@ export default function TikTokDownloader() {
         <div className="container mx-auto px-4" style={{ maxWidth: '900px' }}>
           <div style={{ textAlign: 'center', marginBottom: '56px' }}>
             <h2 style={{
-              fontFamily: "'Syne', sans-serif",
+              fontFamily: "'Outfit', sans-serif",
               fontWeight: 800,
               fontSize: 'clamp(1.6rem, 3vw, 2.4rem)',
               color: '#fff',
@@ -362,7 +362,7 @@ export default function TikTokDownloader() {
               className="hover:border-red-500/30 hover:bg-white/5"
               >
                 <div style={{
-                  fontFamily: "'Syne', sans-serif",
+                  fontFamily: "'Outfit', sans-serif",
                   fontWeight: 800,
                   fontSize: '2.2rem',
                   background: 'linear-gradient(135deg, #fe2c55 0%, #69c9d0 100%)',
@@ -374,7 +374,7 @@ export default function TikTokDownloader() {
                   {step.num}
                 </div>
                 <h3 style={{
-                  fontFamily: "'Syne', sans-serif",
+                  fontFamily: "'Outfit', sans-serif",
                   fontWeight: 700,
                   color: '#fff',
                   marginBottom: '8px',
@@ -394,7 +394,7 @@ export default function TikTokDownloader() {
         <div className="container mx-auto px-4" style={{ maxWidth: '1100px' }}>
           <div style={{ textAlign: 'center', marginBottom: '56px' }}>
             <h2 style={{
-              fontFamily: "'Syne', sans-serif",
+              fontFamily: "'Outfit', sans-serif",
               fontWeight: 800,
               fontSize: 'clamp(1.6rem, 3vw, 2.4rem)',
               color: '#0a0a0a',
@@ -432,7 +432,7 @@ export default function TikTokDownloader() {
                   {f.icon}
                 </div>
                 <h3 style={{
-                  fontFamily: "'Syne', sans-serif",
+                  fontFamily: "'Outfit', sans-serif",
                   fontWeight: 700,
                   color: '#0a0a0a',
                   marginBottom: '8px',
@@ -458,7 +458,7 @@ export default function TikTokDownloader() {
           }}>
             <div>
               <h2 style={{
-                fontFamily: "'Syne', sans-serif",
+                fontFamily: "'Outfit', sans-serif",
                 fontWeight: 800,
                 fontSize: 'clamp(1.6rem, 3vw, 2.2rem)',
                 color: '#0a0a0a',
@@ -527,7 +527,7 @@ export default function TikTokDownloader() {
         <div className="container mx-auto px-4" style={{ maxWidth: '780px' }}>
           <div style={{ textAlign: 'center', marginBottom: '56px' }}>
             <h2 style={{
-              fontFamily: "'Syne', sans-serif",
+              fontFamily: "'Outfit', sans-serif",
               fontWeight: 800,
               fontSize: 'clamp(1.6rem, 3vw, 2.4rem)',
               color: '#0a0a0a',
@@ -588,7 +588,7 @@ export default function TikTokDownloader() {
       }}>
         <div className="container mx-auto px-4">
           <h2 style={{
-            fontFamily: "'Syne', sans-serif",
+            fontFamily: "'Outfit', sans-serif",
             fontWeight: 800,
             fontSize: 'clamp(1.8rem, 4vw, 2.8rem)',
             color: '#fff',
@@ -612,7 +612,7 @@ export default function TikTokDownloader() {
               fontSize: '1.05rem',
               textDecoration: 'none',
               boxShadow: '0 8px 30px rgba(0,0,0,0.3)',
-              fontFamily: "'Syne', sans-serif",
+              fontFamily: "'Outfit', sans-serif",
             }}
           >
             ⬇️ Download TikTok Video Now

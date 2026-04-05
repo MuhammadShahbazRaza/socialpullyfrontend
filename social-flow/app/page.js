@@ -3,11 +3,21 @@ import PlatformCard from '@/components/PlatformCard';
 import { Instagram, Facebook, Music, Youtube, Twitter, Mail } from 'lucide-react';
 
 export const metadata = {
-  title: 'Free Video Downloader - Instagram, TikTok, Facebook, YouTube',
+  title: 'Free Video Downloader - Instagram, TikTok, Facebook, YouTube | SocialPully',
   description: 'Download videos from Instagram Reels, TikTok, Facebook, YouTube in HD quality. Free, fast, no watermark. Support for 15+ social media platforms.',
+  alternates: {
+    canonical: 'https://socialpully.com',
+  },
   robots: {
-    index: false,
-    follow: false,
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 };
 
@@ -24,13 +34,31 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-indigo-50 via-white to-purple-50 py-20">
+    <section className="bg-gradient-to-br from-indigo-50 via-white to-purple-50 py-20">
         <div className="container mx-auto px-4">
-          <h1 className="text-5xl md:text-6xl font-bold text-center mb-6">
-            Download Videos from <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Any Platform</span>
+          <div style={{ marginBottom: '16px', display: 'flex', justifyContent: 'center' }}>
+            <span style={{
+              background: 'linear-gradient(135deg, rgba(99,102,241,0.12), rgba(139,92,246,0.12))',
+              border: '1px solid rgba(99,102,241,0.3)',
+              color: '#6366f1',
+              padding: '6px 16px',
+              borderRadius: '100px',
+              fontSize: '0.8rem',
+              fontWeight: 600,
+              letterSpacing: '0.03em',
+            }}>🚀 15+ Platforms Supported · 25M+ Downloads</span>
+          </div>
+          <h1 className="text-5xl md:text-6xl font-bold text-center mb-6 heading-display text-balance" style={{ color: '#0f0f0f' }}>
+            Download Videos from{' '}
+            <span style={{
+              background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}>Any Platform</span>
           </h1>
-          <p className="text-xl text-center text-gray-600 mb-12 max-w-3xl mx-auto">
-            Free Instagram Reel Downloader, TikTok Video Saver, Facebook Video Download, YouTube Downloader - All in One Place
+          <p className="text-lg text-center mb-12 max-w-3xl mx-auto" style={{ color: '#4b5563', fontWeight: 500 }}>
+            Free Instagram Reel Downloader, TikTok Video Saver, Facebook Video Download, YouTube Downloader — All in One Place
           </p>
           
           <DownloadForm />
@@ -43,7 +71,12 @@ export default function Home() {
       {/* Platforms Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12">Supported Platforms</h2>
+          <h2
+            className="text-center mb-12 heading-section"
+            style={{ color: '#0f0f0f', fontSize: 'clamp(1.75rem, 3vw, 2.25rem)' }}
+          >
+            Supported Platforms
+          </h2>
           <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-6">
             {platforms.map((platform) => (
               <PlatformCard key={platform.name} {...platform} />
@@ -55,7 +88,7 @@ export default function Home() {
       {/* SEO Content */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 max-w-4xl">
-          <article className="prose prose-lg max-w-none">
+          <article className="prose-content">
             <h2>Best Free Video Downloader for All Social Media Platforms</h2>
             <p>
               SocialPully is the most comprehensive online video downloader that supports Instagram Reels, TikTok videos, Facebook content, YouTube videos, Twitter media, and 15+ other social platforms. Our tool is 100% free, requires no registration, and delivers high-quality downloads without watermarks.
@@ -75,7 +108,7 @@ export default function Home() {
               <li>Copy the video URL from Instagram, TikTok, Facebook, or any supported platform</li>
               <li>Paste the link into the SocialPully downloader above</li>
               <li>Select your preferred quality (360p, 720p HD, 1080p Full HD, or 4K)</li>
-              <li>Click "Download" and save the video to your device instantly</li>
+              <li>Click &quot;Download&quot; and save the video to your device instantly</li>
             </ol>
 
             <h3>Features That Make SocialPully the Best Video Downloader</h3>

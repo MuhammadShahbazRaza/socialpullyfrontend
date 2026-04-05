@@ -65,6 +65,34 @@ export const generateHowToSchema = (platform) => {
       { text: 'Go to SocialPully.com/tiktok-video-downloader' },
       { text: 'Paste the TikTok link and choose "No Watermark"' },
       { text: 'Click Download to save the video' }
+    ],
+    twitter: [
+      { text: 'Open Twitter/X and find the video you want to download' },
+      { text: 'Click the Share button and select "Copy Link"' },
+      { text: 'Visit SocialPully.com/twitter-video-downloader' },
+      { text: 'Paste the Twitter video link into the downloader' },
+      { text: 'Select your preferred quality and click Download' }
+    ],
+    pinterest: [
+      { text: 'Open Pinterest and find the video Pin you want to download' },
+      { text: 'Tap the Share button and select "Copy Link"' },
+      { text: 'Visit SocialPully.com/pinterest-video-downloader' },
+      { text: 'Paste the Pinterest video link into the downloader' },
+      { text: 'Click Download to save the video to your device' }
+    ],
+    youtube: [
+      { text: 'Open YouTube and find the video you want to download' },
+      { text: 'Click the Share button and select "Copy Link"' },
+      { text: 'Visit SocialPully.com/youtube-video-downloader' },
+      { text: 'Paste the YouTube video link into the downloader' },
+      { text: 'Select your preferred quality and click Download' }
+    ],
+    facebook: [
+      { text: 'Open Facebook and find the video you want to download' },
+      { text: 'Click the three dots menu and select "Copy Link"' },
+      { text: 'Visit SocialPully.com/facebook-video-downloader' },
+      { text: 'Paste the Facebook video link into the downloader' },
+      { text: 'Choose your preferred quality and click Download' }
     ]
   };
 

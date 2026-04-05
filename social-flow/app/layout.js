@@ -8,10 +8,10 @@ import './globals.css';
 export const metadata = {
   metadataBase: new URL('https://socialpully.com'),
   title: {
-    default: 'SocialPully - Free Video Downloader for Instagram, TikTok, Facebook, YouTube',
+    default: 'SocialPully - Free Social Media Video Downloader | Instagram, TikTok, Twitter, Pinterest',
     template: '%s | SocialPully'
   },
-  description: 'Download videos from Instagram Reels, TikTok, Facebook, YouTube, Twitter and 15+ platforms. Free, fast, HD quality, no watermark. Best online video downloader 2025.',
+  description: 'Download videos from Instagram, TikTok, Twitter/X, Pinterest, Facebook, YouTube and 15+ platforms. Free, fast, HD quality. Best online video downloader 2025.',
   keywords: [
     'instagram reel downloader',
     'tiktok video downloader',
@@ -24,6 +24,11 @@ export const metadata = {
     'fb video downloader',
     'no watermark video downloader',
     'free video downloader',
+    'twitter video downloader',
+    'x video downloader',
+    'pinterest video downloader',
+    'download twitter videos',
+    'save pinterest videos',
   ],
   authors: [{ name: 'SocialPully', url: 'https://socialpully.com' }],
   creator: 'SocialPully',
@@ -84,7 +89,7 @@ export default function RootLayout({ children }) {
         <link rel="apple-touch-icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
       </head>
       <body className="antialiased">
         <Navigation />

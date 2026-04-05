@@ -43,7 +43,7 @@ export default function BlogIndex() {
                   <span>{post.author}</span>
                   <span>{new Date(post.date).toLocaleDateString()}</span>
                 </div>
-                <Link 
+                <Link
                   href={`/blog/${post.slug}`}
                   className="mt-4 inline-block text-indigo-600 font-semibold hover:underline"
                 >
@@ -56,11 +56,11 @@ export default function BlogIndex() {
       </div>
 
       {/* Ad Space */}
-      <div className="container mx-auto px-4 mb-8">
+      {/* <div className="container mx-auto px-4 mb-8">
         <div className="bg-gray-100 h-24 flex items-center justify-center text-gray-400">
           Google AdSense Banner
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
