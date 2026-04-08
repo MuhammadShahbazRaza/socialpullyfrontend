@@ -5,9 +5,6 @@ Allow: /
 # Block API routes — not meant for indexing
 Disallow: /api/
 
-# Block duplicate Instagram route (canonical is /instagram-reels-downloader)
-Disallow: /instagram-reel-downloader
-
 # Sitemap
 Sitemap: https://socialpully.com/sitemap.xml`;
 
