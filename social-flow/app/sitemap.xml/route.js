@@ -4,7 +4,6 @@ export async function GET() {
   const routes = [
     { path: '',                              priority: '1.0', freq: 'daily'   },
     { path: '/tiktok-video-downloader',      priority: '0.9', freq: 'weekly'  },
-    { path: '/instagram-reel-downloader',    priority: '0.9', freq: 'weekly'  },
     { path: '/instagram-reels-downloader',   priority: '0.9', freq: 'weekly'  },
     { path: '/facebook-video-downloader',    priority: '0.9', freq: 'weekly'  },
     { path: '/youtube-video-downloader',     priority: '0.9', freq: 'weekly'  },
