@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { Twitter, Facebook, Instagram, Youtube } from 'lucide-react';
 
-// Inline SocialPully logo — download arrow icon
 function SocialPullyLogo({ size = 32 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
@@ -24,7 +23,7 @@ export default function Footer() {
 
   const footerLinks = {
     'Platforms': [
-      { href: '/instagram-reel-downloader', label: '📸 Instagram Downloader' },
+      { href: '/instagram-reels-downloader', label: '📸 Instagram Downloader' },
       { href: '/tiktok-video-downloader', label: '🎵 TikTok Downloader' },
       { href: '/facebook-video-downloader', label: '📘 Facebook Downloader' },
       { href: '/youtube-video-downloader', label: '▶️ YouTube Downloader' },
@@ -40,8 +39,7 @@ export default function Footer() {
     'Legal': [
       { href: '/privacy-policy', label: 'Privacy Policy' },
       { href: '/terms-of-service', label: 'Terms of Service' },
-      { href: '/dmca', label: 'DMCA' },
-      { href: '/contact', label: 'Contact' },
+      { href: '/contact', label: 'Contact Us' },
     ],
   };
 

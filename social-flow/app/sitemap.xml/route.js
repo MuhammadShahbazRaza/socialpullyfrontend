@@ -4,16 +4,19 @@ export async function GET() {
   const routes = [
     { path: '',                              priority: '1.0', freq: 'daily'   },
     { path: '/tiktok-video-downloader',      priority: '0.9', freq: 'weekly'  },
+    { path: '/instagram-reel-downloader',    priority: '0.9', freq: 'weekly'  },
     { path: '/instagram-reels-downloader',   priority: '0.9', freq: 'weekly'  },
-    { path: '/instagram-reel-downloader',    priority: '0.8', freq: 'weekly'  },
     { path: '/facebook-video-downloader',    priority: '0.9', freq: 'weekly'  },
     { path: '/youtube-video-downloader',     priority: '0.9', freq: 'weekly'  },
     { path: '/twitter-video-downloader',     priority: '0.9', freq: 'weekly'  },
     { path: '/pinterest-video-downloader',   priority: '0.9', freq: 'weekly'  },
-    { path: '/blog',                         priority: '0.7', freq: 'weekly'  },
-    { path: '/faq',                          priority: '0.6', freq: 'monthly' },
+    { path: '/faq',                          priority: '0.7', freq: 'monthly' },
     { path: '/how-it-works',                 priority: '0.6', freq: 'monthly' },
+    { path: '/blog',                         priority: '0.6', freq: 'weekly'  },
     { path: '/about',                        priority: '0.5', freq: 'monthly' },
+    { path: '/contact',                      priority: '0.6', freq: 'monthly' },
+    { path: '/privacy-policy',              priority: '0.4', freq: 'yearly'  },
+    { path: '/terms-of-service',            priority: '0.4', freq: 'yearly'  },
   ];
 
   const today = new Date().toISOString().split('T')[0];

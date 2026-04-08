@@ -419,73 +419,6 @@ export default function YouTubeDownloader() {
         </div>
       </section>
 
-      {/* ── WHY CHOOSE SECTION ── */}
-      <section style={{ padding: '80px 0', background: '#fff' }}>
-        <div className="container mx-auto px-4" style={{ maxWidth: '900px' }}>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '48px',
-            alignItems: 'center',
-          }}>
-            <div>
-              <h2 style={{
-                fontFamily: "'Outfit', sans-serif",
-                fontWeight: 800,
-                fontSize: 'clamp(1.6rem, 3vw, 2.2rem)',
-                color: '#0a0a0a',
-                marginBottom: '12px',
-              }}>
-                Best YouTube Video Downloader Online
-              </h2>
-              <p style={{ color: '#6b7280', lineHeight: '1.7', marginBottom: '28px' }}>
-                <strong>Download YouTube videos online</strong> using SocialPully&apos;s free YouTube downloader. Save YouTube videos in HD 1080p, Full HD, and 4K quality. Convert YouTube videos to MP4 or MP3 format instantly. No app installation, no login required.
-              </p>
-              <ScrollToTopButton style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                background: '#ff0000',
-                color: '#fff',
-                padding: '14px 28px',
-                borderRadius: '12px',
-                fontWeight: 700,
-                fontSize: '0.95rem',
-                textDecoration: 'none',
-                boxShadow: '0 8px 30px rgba(255,0,0,0.35)',
-              }}>
-                ⬇️ Download YouTube Video Free
-              </ScrollToTopButton>
-            </div>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-              {[
-                { label: 'Multiple Formats', desc: 'Download YouTube to MP4, MP3, WEBM formats' },
-                { label: 'HD to 4K Quality', desc: 'Save videos from 720p HD to 4K Ultra HD resolution' },
-                { label: 'YouTube to MP3', desc: 'Extract audio from YouTube videos in high quality' },
-                { label: 'No Software Required', desc: 'Download YouTube videos online directly in browser' },
-                { label: 'Unlimited Downloads', desc: 'Download as many YouTube videos as you want' },
-                { label: 'YouTube Shorts Support', desc: 'Download YouTube Shorts videos easily' },
-              ].map((item) => (
-                <div key={item.label} style={{
-                  display: 'flex',
-                  gap: '12px',
-                  alignItems: 'flex-start',
-                  padding: '12px 0',
-                  borderBottom: '1px solid #f3f4f6',
-                }}>
-                  <span style={{ color: '#ff0000', fontWeight: 800, fontSize: '1rem', marginTop: '1px', flexShrink: 0 }}>✓</span>
-                  <div>
-                    <strong style={{ color: '#0a0a0a', fontSize: '0.9rem' }}>{item.label}:</strong>{' '}
-                    <span style={{ color: '#6b7280', fontSize: '0.875rem' }}>{item.desc}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ── FAQ SECTION ── */}
       <section style={{ padding: '80px 0', background: '#f9fafb' }}>
         <div className="container mx-auto px-4" style={{ maxWidth: '780px' }}>
@@ -575,6 +508,32 @@ export default function YouTubeDownloader() {
           }}>
             ⬇️ Download YouTube Video Now
           </ScrollToTopButton>
+        </div>
+      </section>
+
+      {/* OTHER TOOLS */}
+      <section style={{ padding: '40px 0', background: '#f9fafb', borderTop: '1px solid #e5e7eb' }}>
+        <div className="container mx-auto px-4" style={{ maxWidth: '900px', textAlign: 'center' }}>
+          <p style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: '0.8rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: '#9ca3af', marginBottom: '16px' }}>
+            Also Download From
+          </p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', justifyContent: 'center' }}>
+            <a href="/instagram-reels-downloader" style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', padding: '9px 18px', borderRadius: '10px', background: '#fff', border: '1px solid #e5e7eb', color: '#374151', fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: '0.875rem', textDecoration: 'none', boxShadow: '0 1px 4px rgba(0,0,0,0.06)', whiteSpace: 'nowrap' }}>
+              <span>📸</span> Instagram Download
+            </a>
+            <a href="/tiktok-video-downloader" style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', padding: '9px 18px', borderRadius: '10px', background: '#fff', border: '1px solid #e5e7eb', color: '#374151', fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: '0.875rem', textDecoration: 'none', boxShadow: '0 1px 4px rgba(0,0,0,0.06)', whiteSpace: 'nowrap' }}>
+              <span>🎵</span> TikTok Download
+            </a>
+            <a href="/facebook-video-downloader" style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', padding: '9px 18px', borderRadius: '10px', background: '#fff', border: '1px solid #e5e7eb', color: '#374151', fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: '0.875rem', textDecoration: 'none', boxShadow: '0 1px 4px rgba(0,0,0,0.06)', whiteSpace: 'nowrap' }}>
+              <span>📘</span> Facebook Download
+            </a>
+            <a href="/twitter-video-downloader" style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', padding: '9px 18px', borderRadius: '10px', background: '#fff', border: '1px solid #e5e7eb', color: '#374151', fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: '0.875rem', textDecoration: 'none', boxShadow: '0 1px 4px rgba(0,0,0,0.06)', whiteSpace: 'nowrap' }}>
+              <span>🐦</span> Twitter Download
+            </a>
+            <a href="/pinterest-video-downloader" style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', padding: '9px 18px', borderRadius: '10px', background: '#fff', border: '1px solid #e5e7eb', color: '#374151', fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: '0.875rem', textDecoration: 'none', boxShadow: '0 1px 4px rgba(0,0,0,0.06)', whiteSpace: 'nowrap' }}>
+              <span>📌</span> Pinterest Download
+            </a>
+          </div>
         </div>
       </section>
     </div>

@@ -20,7 +20,7 @@ export const blogPosts = [
       <ol>
         <li>Open the Instagram app and navigate to the Reel you want</li>
         <li>Tap the three dots menu and select "Copy Link"</li>
-        <li>Visit SocialPully.com/instagram-reel-downloader</li>
+        <li>Visit SocialPully.com/instagram-reels-downloader</li>
         <li>Paste the link and click Download</li>
         <li>Your Reel downloads instantly without watermark!</li>
       </ol>

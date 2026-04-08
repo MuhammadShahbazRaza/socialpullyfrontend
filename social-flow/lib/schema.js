@@ -55,7 +55,7 @@ export const generateHowToSchema = (platform) => {
     instagram: [
       { text: 'Open Instagram and find the Reel you want to download' },
       { text: 'Tap the three dots menu and select "Copy Link"' },
-      { text: 'Visit SocialPully.com/instagram-reel-downloader' },
+      { text: 'Visit SocialPully.com/instagram-reels-downloader' },
       { text: 'Paste the Instagram Reel link into the downloader' },
       { text: 'Select your preferred quality and click Download' }
     ],

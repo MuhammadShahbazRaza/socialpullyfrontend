@@ -239,45 +239,6 @@ export default function TwitterVideoDownloaderPage() {
         </div>
       </section>
 
-      {/* WHY CHOOSE */}
-      <section style={{ padding: '88px 0', background: '#fff' }}>
-        <div className="container mx-auto px-4" style={{ maxWidth: '960px' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '56px', alignItems: 'center' }}>
-            <div>
-              <h2 style={{ fontFamily: FONT, fontWeight: 800, fontSize: 'clamp(1.7rem, 3.2vw, 2.3rem)', color: '#0a0a0a', marginBottom: '14px', letterSpacing: '-0.02em' }}>
-                Best Twitter Video Downloader Online
-              </h2>
-              <p style={{ color: '#6b7280', lineHeight: '1.78', marginBottom: '30px' }}>
-                Download Twitter videos online free using SocialPully&apos;s fast and reliable Twitter video downloader. Save Twitter videos and GIFs in HD quality directly to your device. No app installation, no login required — just paste the tweet URL and download instantly.
-              </p>
-              <ScrollToTopButton style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'linear-gradient(135deg, #1DA1F2 0%, #0d7dc7 100%)', color: '#fff', padding: '14px 28px', borderRadius: '12px', fontFamily: FONT, fontWeight: 700, fontSize: '0.95rem', boxShadow: '0 8px 30px rgba(29,161,242,0.35)', border: 'none', cursor: 'pointer' }}>
-                ⬇️ Download Twitter Video Free
-              </ScrollToTopButton>
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-              {[
-                { label: 'Videos & GIFs', desc: 'Download both Twitter videos and animated GIFs in MP4' },
-                { label: 'HD Quality', desc: 'Save videos in original quality up to 1080p resolution' },
-                { label: 'MP4 Format', desc: 'Universal format compatible with all devices and players' },
-                { label: 'No App Required', desc: 'Twitter video downloader online works directly in browser' },
-                { label: 'Unlimited Downloads', desc: 'Download Twitter videos as many times as you want' },
-                { label: 'All Devices', desc: 'iPhone, Android, Windows, Mac, Linux compatible' },
-                { label: 'Fast Processing', desc: 'Average download time under 3 seconds' },
-                { label: 'Privacy Protected', desc: "We don't store your videos or track your downloads" },
-              ].map((item) => (
-                <div key={item.label} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start', padding: '12px 0', borderBottom: '1px solid #f3f4f6' }}>
-                  <span style={{ color: '#1DA1F2', fontWeight: 800, fontSize: '1.1rem', marginTop: '1px', flexShrink: 0 }}>✓</span>
-                  <div>
-                    <strong style={{ color: '#0a0a0a', fontSize: '0.9rem', fontFamily: FONT }}>{item.label}:</strong>{' '}
-                    <span style={{ color: '#6b7280', fontSize: '0.875rem' }}>{item.desc}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* FAQ */}
       <section style={{ padding: '88px 0', background: '#f9fafb' }}>
         <div className="container mx-auto px-4" style={{ maxWidth: '780px' }}>
@@ -315,6 +276,32 @@ export default function TwitterVideoDownloaderPage() {
           <ScrollToTopButton style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', background: '#fff', color: '#1DA1F2', padding: '16px 38px', borderRadius: '14px', fontFamily: FONT, fontWeight: 800, fontSize: '1.05rem', boxShadow: '0 8px 30px rgba(0,0,0,0.25)', border: 'none', cursor: 'pointer' }}>
             ⬇️ Download Twitter Video Now
           </ScrollToTopButton>
+        </div>
+      </section>
+
+      {/* OTHER TOOLS */}
+      <section style={{ padding: '40px 0', background: '#f9fafb', borderTop: '1px solid #e5e7eb' }}>
+        <div className="container mx-auto px-4" style={{ maxWidth: '900px', textAlign: 'center' }}>
+          <p style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: '0.8rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: '#9ca3af', marginBottom: '16px' }}>
+            Also Download From
+          </p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', justifyContent: 'center' }}>
+            <a href="/instagram-reels-downloader" style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', padding: '9px 18px', borderRadius: '10px', background: '#fff', border: '1px solid #e5e7eb', color: '#374151', fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: '0.875rem', textDecoration: 'none', boxShadow: '0 1px 4px rgba(0,0,0,0.06)', whiteSpace: 'nowrap' }}>
+              <span>📸</span> Instagram Download
+            </a>
+            <a href="/tiktok-video-downloader" style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', padding: '9px 18px', borderRadius: '10px', background: '#fff', border: '1px solid #e5e7eb', color: '#374151', fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: '0.875rem', textDecoration: 'none', boxShadow: '0 1px 4px rgba(0,0,0,0.06)', whiteSpace: 'nowrap' }}>
+              <span>🎵</span> TikTok Download
+            </a>
+            <a href="/facebook-video-downloader" style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', padding: '9px 18px', borderRadius: '10px', background: '#fff', border: '1px solid #e5e7eb', color: '#374151', fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: '0.875rem', textDecoration: 'none', boxShadow: '0 1px 4px rgba(0,0,0,0.06)', whiteSpace: 'nowrap' }}>
+              <span>📘</span> Facebook Download
+            </a>
+            <a href="/youtube-video-downloader" style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', padding: '9px 18px', borderRadius: '10px', background: '#fff', border: '1px solid #e5e7eb', color: '#374151', fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: '0.875rem', textDecoration: 'none', boxShadow: '0 1px 4px rgba(0,0,0,0.06)', whiteSpace: 'nowrap' }}>
+              <span>▶️</span> YouTube Download
+            </a>
+            <a href="/pinterest-video-downloader" style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', padding: '9px 18px', borderRadius: '10px', background: '#fff', border: '1px solid #e5e7eb', color: '#374151', fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: '0.875rem', textDecoration: 'none', boxShadow: '0 1px 4px rgba(0,0,0,0.06)', whiteSpace: 'nowrap' }}>
+              <span>📌</span> Pinterest Download
+            </a>
+          </div>
         </div>
       </section>
     </div>

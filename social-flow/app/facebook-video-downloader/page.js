@@ -421,75 +421,6 @@ export default function FacebookDownloader() {
         </div>
       </section>
 
-      {/* ── WHY CHOOSE SECTION ── */}
-      <section style={{ padding: '80px 0', background: '#fff' }}>
-        <div className="container mx-auto px-4" style={{ maxWidth: '900px' }}>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '48px',
-            alignItems: 'center',
-          }}>
-            <div>
-              <h2 style={{
-                fontFamily: "'Outfit', sans-serif",
-                fontWeight: 800,
-                fontSize: 'clamp(1.6rem, 3vw, 2.2rem)',
-                color: '#0a0a0a',
-                marginBottom: '12px',
-              }}>
-                Best Facebook Video Downloader Online
-              </h2>
-              <p style={{ color: '#6b7280', lineHeight: '1.7', marginBottom: '28px' }}>
-                <strong>Download videos from Facebook</strong> using SocialPully&apos;s free <strong>Facebook video downloader online</strong> tool. Save Facebook videos, reels, and watch content in HD and 4K quality directly to your device. No app installation, no login required.
-              </p>
-              <ScrollToTopButton
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  background: '#1877f2',
-                  color: '#fff',
-                  padding: '14px 28px',
-                  borderRadius: '12px',
-                  fontWeight: 700,
-                  fontSize: '0.95rem',
-                  textDecoration: 'none',
-                  boxShadow: '0 8px 30px rgba(24,119,242,0.35)',
-                }}
-              >
-                ⬇️ Download Facebook Video Free
-              </ScrollToTopButton>
-            </div>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-              {[
-                { label: 'HD & 4K Quality', desc: 'Download Facebook videos in original quality up to 4K resolution' },
-                { label: 'Multiple Formats', desc: 'Save videos in MP4, WebM, or convert to MP3 audio' },
-                { label: 'No App Required', desc: 'Facebook video downloader online works directly in browser' },
-                { label: 'Unlimited Downloads', desc: 'Download as many Facebook videos as you want' },
-                { label: 'All Devices', desc: 'iPhone, Android, PC, Mac compatible' },
-                { label: 'Fast Processing', desc: 'Average download time under 5 seconds' },
-              ].map((item) => (
-                <div key={item.label} style={{
-                  display: 'flex',
-                  gap: '12px',
-                  alignItems: 'flex-start',
-                  padding: '12px 0',
-                  borderBottom: '1px solid #f3f4f6',
-                }}>
-                  <span style={{ color: '#1877f2', fontWeight: 800, fontSize: '1rem', marginTop: '1px', flexShrink: 0 }}>✓</span>
-                  <div>
-                    <strong style={{ color: '#0a0a0a', fontSize: '0.9rem' }}>{item.label}:</strong>{' '}
-                    <span style={{ color: '#6b7280', fontSize: '0.875rem' }}>{item.desc}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ── FAQ SECTION ── */}
       <section style={{ padding: '80px 0', background: '#f9fafb' }}>
         <div className="container mx-auto px-4" style={{ maxWidth: '780px' }}>
@@ -579,6 +510,32 @@ export default function FacebookDownloader() {
           }}>
             ⬇️ Download Facebook Video Now
           </ScrollToTopButton>
+        </div>
+      </section>
+
+      {/* OTHER TOOLS */}
+      <section style={{ padding: '40px 0', background: '#f9fafb', borderTop: '1px solid #e5e7eb' }}>
+        <div className="container mx-auto px-4" style={{ maxWidth: '900px', textAlign: 'center' }}>
+          <p style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: '0.8rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: '#9ca3af', marginBottom: '16px' }}>
+            Also Download From
+          </p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', justifyContent: 'center' }}>
+            <a href="/instagram-reels-downloader" style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', padding: '9px 18px', borderRadius: '10px', background: '#fff', border: '1px solid #e5e7eb', color: '#374151', fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: '0.875rem', textDecoration: 'none', boxShadow: '0 1px 4px rgba(0,0,0,0.06)', whiteSpace: 'nowrap' }}>
+              <span>📸</span> Instagram Download
+            </a>
+            <a href="/tiktok-video-downloader" style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', padding: '9px 18px', borderRadius: '10px', background: '#fff', border: '1px solid #e5e7eb', color: '#374151', fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: '0.875rem', textDecoration: 'none', boxShadow: '0 1px 4px rgba(0,0,0,0.06)', whiteSpace: 'nowrap' }}>
+              <span>🎵</span> TikTok Download
+            </a>
+            <a href="/youtube-video-downloader" style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', padding: '9px 18px', borderRadius: '10px', background: '#fff', border: '1px solid #e5e7eb', color: '#374151', fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: '0.875rem', textDecoration: 'none', boxShadow: '0 1px 4px rgba(0,0,0,0.06)', whiteSpace: 'nowrap' }}>
+              <span>▶️</span> YouTube Download
+            </a>
+            <a href="/twitter-video-downloader" style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', padding: '9px 18px', borderRadius: '10px', background: '#fff', border: '1px solid #e5e7eb', color: '#374151', fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: '0.875rem', textDecoration: 'none', boxShadow: '0 1px 4px rgba(0,0,0,0.06)', whiteSpace: 'nowrap' }}>
+              <span>🐦</span> Twitter Download
+            </a>
+            <a href="/pinterest-video-downloader" style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', padding: '9px 18px', borderRadius: '10px', background: '#fff', border: '1px solid #e5e7eb', color: '#374151', fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: '0.875rem', textDecoration: 'none', boxShadow: '0 1px 4px rgba(0,0,0,0.06)', whiteSpace: 'nowrap' }}>
+              <span>📌</span> Pinterest Download
+            </a>
+          </div>
         </div>
       </section>
     </div>

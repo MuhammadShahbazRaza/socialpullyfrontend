@@ -1,13 +1,16 @@
 import { NextResponse } from "next/server";
 
 const redirects = {
-  "/instagram": "/instagram-reel-downloader",
+  "/instagram": "/instagram-reels-downloader",
   "/tiktok": "/tiktok-video-downloader",
   "/facebook": "/facebook-video-downloader",
   "/youtube": "/youtube-video-downloader",
-  "/ig": "/instagram-reel-downloader",
+  "/ig": "/instagram-reels-downloader",
   "/fb": "/facebook-video-downloader",
   "/yt": "/youtube-video-downloader",
+  "/dmca": "/contact",
+  "/privacy": "/privacy-policy",
+  "/tos": "/terms-of-service",
 };
 
 export function middleware(request) {
@@ -21,5 +24,5 @@ export function middleware(request) {
 }
 
 export const config = {
-  matcher: ["/instagram", "/tiktok", "/facebook", "/youtube", "/ig", "/fb", "/yt"],
+  matcher: ["/instagram", "/tiktok", "/facebook", "/youtube", "/ig", "/fb", "/yt", "/dmca", "/privacy", "/tos"],
 };
