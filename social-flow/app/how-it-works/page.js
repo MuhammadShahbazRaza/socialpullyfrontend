@@ -5,9 +5,24 @@ import { generateHowToSchema } from '@/lib/schema';
 export const metadata = {
   title: 'How It Works - Download Videos in 3 Easy Steps | SocialPully',
   description: 'Learn how to download videos from Instagram, TikTok, Facebook, YouTube in just 3 simple steps. Free, fast, and easy video downloader guide.',
+  alternates: {
+    canonical: 'https://socialpully.com/how-it-works',
+  },
+  openGraph: {
+    title: 'How It Works - Download Videos in 3 Easy Steps | SocialPully',
+    description: 'Learn how to download videos from Instagram, TikTok, Facebook, YouTube in just 3 simple steps. Free, fast, and easy video downloader guide.',
+    url: 'https://socialpully.com/how-it-works',
+    type: 'website',
+  },
   robots: {
-    index: false,
-    follow: false,
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-snippet': -1,
+      'max-image-preview': 'large',
+    },
   },
 };
 

@@ -2,9 +2,25 @@ import Link from 'next/link';
 
 export const metadata = {
   title: 'Privacy Policy | SocialPully',
-  description: 'Read the SocialPully Privacy Policy. Learn how we handle your data when you use our free video downloader tools.',
+  description: 'Read the SocialPully Privacy Policy. Learn how we protect your privacy and handle your data when you use our free social media video downloader tools.',
   alternates: {
     canonical: 'https://socialpully.com/privacy-policy',
+  },
+  openGraph: {
+    title: 'Privacy Policy | SocialPully',
+    description: 'Read the SocialPully Privacy Policy. Learn how we protect your privacy and handle your data when you use our free social media video downloader tools.',
+    url: 'https://socialpully.com/privacy-policy',
+    type: 'website',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-snippet': -1,
+      'max-image-preview': 'large',
+    },
   },
 };
 

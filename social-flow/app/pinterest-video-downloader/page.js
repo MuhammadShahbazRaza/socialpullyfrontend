@@ -6,7 +6,7 @@ import ScrollToTopButton from '@/components/ScrollToTopButton';
 
 export const metadata = {
   title: 'Pinterest Video Downloader - Save Pinterest Videos Free | SocialPully',
-  description: 'Download Pinterest videos, GIFs and pins in HD quality. Free Pinterest video downloader online. Save Pinterest videos to MP4. No registration. Works on all devices.',
+  description: 'Download Pinterest videos, GIFs and pins in HD quality. Free Pinterest video downloader online. Save Pinterest videos to MP4. No registration required.',
   keywords: [
     'pinterest video downloader',
     'download pinterest videos',

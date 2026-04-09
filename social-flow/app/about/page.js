@@ -1,9 +1,24 @@
 export const metadata = {
-  title: 'About SocialPully- Free Video Downloader for All Social Media',
-  description: 'Learn about SocialPully, the best free video downloader for Instagram, TikTok, Facebook, YouTube and 15+ platforms. Our mission is to make video downloading simple and accessible.',
+  title: 'About SocialPully - Free Video Downloader for All Social Media',
+  description: 'Learn about SocialPully, the best free video downloader for Instagram, TikTok, Facebook, YouTube and 15+ platforms. Free, fast, and private.',
+  alternates: {
+    canonical: 'https://socialpully.com/about',
+  },
+  openGraph: {
+    title: 'About SocialPully - Free Social Media Video Downloader',
+    description: 'Learn about SocialPully, the best free video downloader for Instagram, TikTok, Facebook, YouTube and 15+ platforms. Free, fast, and private.',
+    url: 'https://socialpully.com/about',
+    type: 'website',
+  },
   robots: {
-    index: false,
-    follow: false,
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-snippet': -1,
+      'max-image-preview': 'large',
+    },
   },
 };
 

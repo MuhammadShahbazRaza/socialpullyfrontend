@@ -5,9 +5,24 @@ export const metadata = {
   title: 'FAQ - Frequently Asked Questions | SocialPully Video Downloader',
   description: 'Get answers to common questions about downloading videos from Instagram, TikTok, Facebook, YouTube. Free support and guides.',
   keywords: ['video downloader faq', 'how to download videos', 'instagram downloader help', 'tiktok downloader questions'],
+  alternates: {
+    canonical: 'https://socialpully.com/faq',
+  },
+  openGraph: {
+    title: 'FAQ - Frequently Asked Questions | SocialPully',
+    description: 'Get answers to common questions about downloading videos from Instagram, TikTok, Facebook, YouTube. Free support and guides.',
+    url: 'https://socialpully.com/faq',
+    type: 'website',
+  },
   robots: {
-    index: false,
-    follow: false,
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-snippet': -1,
+      'max-image-preview': 'large',
+    },
   },
 };
 

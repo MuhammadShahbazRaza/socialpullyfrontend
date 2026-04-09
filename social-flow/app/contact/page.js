@@ -2,9 +2,25 @@ import Link from 'next/link';
 
 export const metadata = {
   title: 'Contact Us | SocialPully',
-  description: 'Get in touch with the SocialPully team. We are here to help with any questions about our free video downloader tools.',
+  description: 'Get in touch with the SocialPully team. We are here to help with any questions about our free video downloader tools and services.',
   alternates: {
     canonical: 'https://socialpully.com/contact',
+  },
+  openGraph: {
+    title: 'Contact SocialPully - We Are Here to Help',
+    description: 'Get in touch with the SocialPully team. We are here to help with any questions about our free video downloader tools and services.',
+    url: 'https://socialpully.com/contact',
+    type: 'website',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-snippet': -1,
+      'max-image-preview': 'large',
+    },
   },
 };
 

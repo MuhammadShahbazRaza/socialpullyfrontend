@@ -2,9 +2,25 @@ import Link from 'next/link';
 
 export const metadata = {
   title: 'Terms of Service | SocialPully',
-  description: 'Read the SocialPully Terms of Service. By using our video downloader tools, you agree to these terms.',
+  description: 'Read the SocialPully Terms of Service. Understand the rules and guidelines for using our free social media video downloader tools responsibly.',
   alternates: {
     canonical: 'https://socialpully.com/terms-of-service',
+  },
+  openGraph: {
+    title: 'Terms of Service | SocialPully',
+    description: 'Read the SocialPully Terms of Service. Understand the rules and guidelines for using our free social media video downloader tools responsibly.',
+    url: 'https://socialpully.com/terms-of-service',
+    type: 'website',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-snippet': -1,
+      'max-image-preview': 'large',
+    },
   },
 };
 

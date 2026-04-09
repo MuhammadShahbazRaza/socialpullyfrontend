@@ -15,13 +15,27 @@ export async function generateMetadata({ params }) {
     title: post.title,
     description: post.excerpt,
     keywords: post.keywords,
+    alternates: {
+      canonical: `https://socialpully.com/blog/${params.slug}`,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-snippet': -1,
+        'max-image-preview': 'large',
+      },
+    },
     openGraph: {
       title: post.title,
       description: post.excerpt,
       type: 'article',
+      url: `https://socialpully.com/blog/${params.slug}`,
       publishedTime: post.date,
-      authors: [post.author]
-    }
+      authors: [post.author],
+    },
   };
 }
 

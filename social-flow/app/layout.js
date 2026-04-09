@@ -59,17 +59,17 @@ export const metadata = {
     siteName: 'SocialPully',
     title: 'SocialPully - Free Video Downloader',
     description: 'Download videos from any social media platform. Free, fast, HD quality, no watermark.',
-    images: ['/og-image.jpg'],
+    images: [{ url: '/logo.svg', width: 1200, height: 630, alt: 'SocialPully - Free Social Media Video Downloader' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'SocialPully - Free Video Downloader',
     description: 'Download videos from Instagram, TikTok, Facebook, YouTube without watermark',
-    images: ['/twitter-image.jpg'],
+    images: ['/logo.svg'],
   },
-  verification: {
-    google: 'your-google-verification-code',
-  },
+  // verification: {
+  //   google: 'ADD_YOUR_GOOGLE_SEARCH_CONSOLE_VERIFICATION_CODE_HERE',
+  // },
 };
 
 export default function RootLayout({ children }) {

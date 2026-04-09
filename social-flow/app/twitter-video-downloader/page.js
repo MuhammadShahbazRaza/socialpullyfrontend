@@ -6,7 +6,7 @@ import ScrollToTopButton from '@/components/ScrollToTopButton';
 
 export const metadata = {
   title: 'Twitter Video Downloader - Save Videos & GIFs Free | SocialPully',
-  description: 'Download Twitter videos, GIFs and X videos in HD quality. Free Twitter video downloader online. Save tweets videos to MP4. No registration. Works on all devices.',
+  description: 'Download Twitter videos, GIFs and X videos in HD quality. Free Twitter video downloader online. Save tweet videos to MP4. No registration required.',
   keywords: [
     'twitter video downloader',
     'download twitter videos',

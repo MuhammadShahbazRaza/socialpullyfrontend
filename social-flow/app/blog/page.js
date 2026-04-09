@@ -8,9 +8,24 @@ export const metadata = {
   title: 'Blog - Video Download Tips, Guides & Tutorials | SocialPully',
   description: 'Learn how to download videos from Instagram, TikTok, Facebook, YouTube. Tips, guides, and tutorials for social media video downloads.',
   keywords: ['video download guide', 'instagram tips', 'tiktok tutorials', 'social media guides'],
+  alternates: {
+    canonical: 'https://socialpully.com/blog',
+  },
+  openGraph: {
+    title: 'Blog - Video Download Tips, Guides & Tutorials | SocialPully',
+    description: 'Learn how to download videos from Instagram, TikTok, Facebook, YouTube. Tips, guides, and tutorials for social media video downloads.',
+    url: 'https://socialpully.com/blog',
+    type: 'website',
+  },
   robots: {
-    index: false,
-    follow: false,
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-snippet': -1,
+      'max-image-preview': 'large',
+    },
   },
 };
 
