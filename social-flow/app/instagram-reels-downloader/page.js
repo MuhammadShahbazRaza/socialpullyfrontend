@@ -3,9 +3,10 @@ import JsonLd from '@/components/JsonLd';
 import { generateFAQSchema, generateHowToSchema, generateBreadcrumbSchema } from '@/lib/schema';
 import Link from 'next/link';
 import ScrollToTopButton from '@/components/ScrollToTopButton';
+import { InstagramIcon, TikTokIcon, FacebookIcon, YouTubeIcon, XTwitterIcon, PinterestIcon } from '@/components/PlatformIcons';
 
 export const metadata = {
-  title: 'Instagram Reels Downloader - No Watermark, HD | SocialPully',
+  title: 'Instagram Reels Downloader - No Watermark, HD',
   description: 'Download Instagram reels without watermark in HD quality. Free IG reels downloader. No registration required. Works on all devices.',
   keywords: [
     'instagram reels downloader',
@@ -29,7 +30,7 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: 'Instagram Reels Downloader - No Watermark, HD | SocialPully',
+    title: 'Instagram Reels Downloader - No Watermark, HD',
     description: 'Download Instagram reels without watermark in HD quality. Free IG reels downloader. No registration required.',
     url: 'https://socialpully.com/instagram-reels-downloader',
     type: 'website',
@@ -108,12 +109,12 @@ export default function InstagramReelsDownloader() {
 
           <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '24px' }}>
             <span style={{ background: 'linear-gradient(135deg, rgba(193,53,132,0.15), rgba(225,119,64,0.15))', border: '1px solid rgba(193,53,132,0.3)', color: '#e1306c', padding: '6px 16px', borderRadius: '100px', fontSize: '0.8rem', fontWeight: 600, letterSpacing: '0.03em' }}>
-              📸 #1 Instagram Downloader · 18M+ Downloads Since 2022
+              #1 Instagram Downloader · 18M+ Downloads Since 2022
             </span>
           </div>
 
-          <h1 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 800, fontSize: 'clamp(2.2rem, 5vw, 3.8rem)', textAlign: 'center', marginBottom: '16px', color: '#fff', lineHeight: 1.1 }}>
-            📸 Instagram Reels Downloader
+          <h1 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 800, fontSize: 'clamp(2.2rem, 5vw, 3.8rem)', textAlign: 'center', marginBottom: '16px', color: '#fff', lineHeight: 1.1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
+            <InstagramIcon size={48} /> Instagram Reels Downloader
           </h1>
 
           <p style={{ textAlign: 'center', color: '#9ca3af', fontSize: 'clamp(1rem, 2vw, 1.2rem)', marginBottom: '12px', fontWeight: 500 }}>
@@ -273,14 +274,14 @@ export default function InstagramReelsDownloader() {
           <p style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: '0.8rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: '#9ca3af', marginBottom: '16px' }}>Also Download From</p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', justifyContent: 'center' }}>
             {[
-              { href: '/tiktok-video-downloader', icon: '🎵', label: 'TikTok Download' },
-              { href: '/facebook-video-downloader', icon: '📘', label: 'Facebook Download' },
-              { href: '/youtube-video-downloader', icon: '▶️', label: 'YouTube Download' },
-              { href: '/twitter-video-downloader', icon: '🐦', label: 'Twitter Download' },
-              { href: '/pinterest-video-downloader', icon: '📌', label: 'Pinterest Download' },
+              { href: '/tiktok-video-downloader', icon: <TikTokIcon size={18} />, label: 'TikTok Download' },
+              { href: '/facebook-video-downloader', icon: <FacebookIcon size={18} />, label: 'Facebook Download' },
+              { href: '/youtube-video-downloader', icon: <YouTubeIcon size={18} />, label: 'YouTube Download' },
+              { href: '/twitter-video-downloader', icon: <XTwitterIcon size={18} />, label: 'Twitter Download' },
+              { href: '/pinterest-video-downloader', icon: <PinterestIcon size={18} />, label: 'Pinterest Download' },
             ].map(({ href, icon, label }) => (
               <a key={href} href={href} style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', padding: '9px 18px', borderRadius: '10px', background: '#fff', border: '1px solid #e5e7eb', color: '#374151', fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: '0.875rem', textDecoration: 'none', boxShadow: '0 1px 4px rgba(0,0,0,0.06)', whiteSpace: 'nowrap' }}>
-                <span>{icon}</span> {label}
+                <span style={{ display: 'flex', alignItems: 'center' }}>{icon}</span> {label}
               </a>
             ))}
           </div>

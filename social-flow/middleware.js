@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 
 const redirects = {
+  // Blog 301 redirects
+  "/blog/how-to-download-instagram-reels-2024": "/blog/how-to-download-instagram-reels",
   // Singular → plural fix (ghost page cleanup)
   "/instagram-reel-downloader": "/instagram-reels-downloader",
   // Short URL aliases
@@ -28,6 +30,7 @@ export function middleware(request) {
 
 export const config = {
   matcher: [
+    "/blog/how-to-download-instagram-reels-2024",
     "/instagram-reel-downloader",
     "/instagram",
     "/tiktok",

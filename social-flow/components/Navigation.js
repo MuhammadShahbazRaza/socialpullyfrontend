@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { Download, Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { InstagramIcon, TikTokIcon, XTwitterIcon, PinterestIcon, FacebookIcon, YouTubeIcon } from './PlatformIcons';
 
 function SocialPullyLogo({ size = 32 }) {
   return (
@@ -23,12 +24,12 @@ function SocialPullyLogo({ size = 32 }) {
 const FONT = "'Outfit', sans-serif";
 
 const navLinks = [
-  { href: '/instagram-reels-downloader', label: 'Instagram', icon: '📸' },
-  { href: '/tiktok-video-downloader', label: 'TikTok', icon: '🎵' },
-  { href: '/twitter-video-downloader', label: 'Twitter', icon: '🐦' },
-  { href: '/pinterest-video-downloader', label: 'Pinterest', icon: '📌' },
-  { href: '/facebook-video-downloader', label: 'Facebook', icon: '📘' },
-  { href: '/youtube-video-downloader', label: 'YouTube', icon: '▶️' },
+  { href: '/instagram-reels-downloader', label: 'Instagram', icon: <InstagramIcon size={16} /> },
+  { href: '/tiktok-video-downloader', label: 'TikTok', icon: <TikTokIcon size={16} /> },
+  { href: '/twitter-video-downloader', label: 'Twitter', icon: <XTwitterIcon size={16} /> },
+  { href: '/pinterest-video-downloader', label: 'Pinterest', icon: <PinterestIcon size={16} /> },
+  { href: '/facebook-video-downloader', label: 'Facebook', icon: <FacebookIcon size={16} /> },
+  { href: '/youtube-video-downloader', label: 'YouTube', icon: <YouTubeIcon size={16} /> },
 ];
 
 export default function Navigation() {
@@ -95,7 +96,7 @@ export default function Navigation() {
                 }}
                 className="hover:bg-indigo-50 hover:text-indigo-600"
               >
-                {link.icon && <span style={{ fontSize: '0.8rem' }}>{link.icon}</span>}
+                {link.icon && <span style={{ display: 'flex', alignItems: 'center' }}>{link.icon}</span>}
                 {link.label}
               </Link>
             ))}
@@ -156,7 +157,7 @@ export default function Navigation() {
                 className="hover:bg-indigo-50 hover:text-indigo-600"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                {link.icon && <span style={{ fontSize: '1rem' }}>{link.icon}</span>}
+                {link.icon && <span style={{ display: 'flex', alignItems: 'center' }}>{link.icon}</span>}
                 {link.label}
               </Link>
             ))}

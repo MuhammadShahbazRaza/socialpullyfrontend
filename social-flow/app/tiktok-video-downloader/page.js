@@ -3,9 +3,8 @@ import JsonLd from '@/components/JsonLd';
 import { generateFAQSchema, generateHowToSchema, generateBreadcrumbSchema } from '@/lib/schema';
 import Link from 'next/link';
 import ScrollToTopButton from '@/components/ScrollToTopButton';
-
-export const metadata = {
-  title: 'TikTok Video Downloader - No Watermark, HD | SocialPully',
+import { InstagramIcon, FacebookIcon, YouTubeIcon, XTwitterIcon, PinterestIcon, TikTokIcon } from '@/components/PlatformIcons';export const metadata = {
+  title: 'TikTok Video Downloader - No Watermark, HD',
   description: 'Download TikTok videos without watermark in HD quality. Free TikTok to MP4 & MP3 converter. No registration required. Works on all devices.',
   keywords: [
     'tiktok video downloader',
@@ -29,7 +28,7 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: 'TikTok Video Downloader - No Watermark, HD | SocialPully',
+    title: 'TikTok Video Downloader - No Watermark, HD',
     description: 'Download TikTok videos without watermark in HD quality. Free TikTok to MP4 & MP3 converter.',
     url: 'https://socialpully.com/tiktok-video-downloader',
     type: 'website',
@@ -168,7 +167,7 @@ export default function TikTokDownloader() {
               fontWeight: 600,
               letterSpacing: '0.03em',
             }}>
-              🎵 #1 TikTok Downloader · 15M+ Downloads Since 2022
+              #1 TikTok Downloader · 15M+ Downloads Since 2022
             </span>
           </div>
 
@@ -181,8 +180,13 @@ export default function TikTokDownloader() {
             marginBottom: '16px',
             color: '#fff',
             lineHeight: 1.1,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '16px',
+            flexWrap: 'wrap',
           }}>
-            🎵 TikTok Video Downloader
+            <TikTokIcon size={48} /> TikTok Video Downloader
           </h1>
 
           <p style={{
@@ -570,19 +574,19 @@ export default function TikTokDownloader() {
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', justifyContent: 'center' }}>
             <a href="/instagram-reels-downloader" style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', padding: '9px 18px', borderRadius: '10px', background: '#fff', border: '1px solid #e5e7eb', color: '#374151', fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: '0.875rem', textDecoration: 'none', boxShadow: '0 1px 4px rgba(0,0,0,0.06)', whiteSpace: 'nowrap' }}>
-              <span>📸</span> Instagram Download
+              <span style={{ display: 'flex', alignItems: 'center' }}><InstagramIcon size={18} /></span> Instagram Download
             </a>
             <a href="/facebook-video-downloader" style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', padding: '9px 18px', borderRadius: '10px', background: '#fff', border: '1px solid #e5e7eb', color: '#374151', fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: '0.875rem', textDecoration: 'none', boxShadow: '0 1px 4px rgba(0,0,0,0.06)', whiteSpace: 'nowrap' }}>
-              <span>📘</span> Facebook Download
+              <span style={{ display: 'flex', alignItems: 'center' }}><FacebookIcon size={18} /></span> Facebook Download
             </a>
             <a href="/youtube-video-downloader" style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', padding: '9px 18px', borderRadius: '10px', background: '#fff', border: '1px solid #e5e7eb', color: '#374151', fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: '0.875rem', textDecoration: 'none', boxShadow: '0 1px 4px rgba(0,0,0,0.06)', whiteSpace: 'nowrap' }}>
-              <span>▶️</span> YouTube Download
+              <span style={{ display: 'flex', alignItems: 'center' }}><YouTubeIcon size={18} /></span> YouTube Download
             </a>
             <a href="/twitter-video-downloader" style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', padding: '9px 18px', borderRadius: '10px', background: '#fff', border: '1px solid #e5e7eb', color: '#374151', fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: '0.875rem', textDecoration: 'none', boxShadow: '0 1px 4px rgba(0,0,0,0.06)', whiteSpace: 'nowrap' }}>
-              <span>🐦</span> Twitter Download
+              <span style={{ display: 'flex', alignItems: 'center' }}><XTwitterIcon size={18} /></span> Twitter Download
             </a>
             <a href="/pinterest-video-downloader" style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', padding: '9px 18px', borderRadius: '10px', background: '#fff', border: '1px solid #e5e7eb', color: '#374151', fontFamily: "'Outfit', sans-serif", fontWeight: 600, fontSize: '0.875rem', textDecoration: 'none', boxShadow: '0 1px 4px rgba(0,0,0,0.06)', whiteSpace: 'nowrap' }}>
-              <span>📌</span> Pinterest Download
+              <span style={{ display: 'flex', alignItems: 'center' }}><PinterestIcon size={18} /></span> Pinterest Download
             </a>
           </div>
         </div>

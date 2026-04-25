@@ -1,23 +1,33 @@
 import { getAllBlogPosts } from '@/lib/blog-posts';
 
+// ─────────────────────────────────────────────────────────────────
+// After deploying, manually submit your sitemap in Google Search
+// Console: https://search.google.com/search-console
+// Go to Sitemaps → Add a new sitemap → enter: sitemap.xml
+// Also ping Google directly (one-time after deploy):
+// https://www.google.com/ping?sitemap=https://socialpully.com/sitemap.xml
+// ─────────────────────────────────────────────────────────────────
+
+const TODAY = '2026-04-12';
+
 export async function GET() {
   const baseUrl = 'https://socialpully.com';
 
   const staticRoutes = [
-    { path: '',                            priority: '1.0', freq: 'daily',   lastmod: '2026-04-08' },
-    { path: '/tiktok-video-downloader',    priority: '0.9', freq: 'weekly',  lastmod: '2026-04-08' },
-    { path: '/instagram-reels-downloader', priority: '0.9', freq: 'weekly',  lastmod: '2026-04-08' },
-    { path: '/facebook-video-downloader',  priority: '0.9', freq: 'weekly',  lastmod: '2026-04-08' },
-    { path: '/youtube-video-downloader',   priority: '0.9', freq: 'weekly',  lastmod: '2026-04-08' },
-    { path: '/twitter-video-downloader',   priority: '0.9', freq: 'weekly',  lastmod: '2026-04-08' },
-    { path: '/pinterest-video-downloader', priority: '0.9', freq: 'weekly',  lastmod: '2026-04-08' },
-    { path: '/blog',                       priority: '0.8', freq: 'weekly',  lastmod: '2026-04-08' },
-    { path: '/faq',                        priority: '0.7', freq: 'monthly', lastmod: '2026-04-08' },
-    { path: '/how-it-works',               priority: '0.7', freq: 'monthly', lastmod: '2026-04-08' },
-    { path: '/about',                      priority: '0.6', freq: 'monthly', lastmod: '2026-04-08' },
-    { path: '/contact',                    priority: '0.6', freq: 'monthly', lastmod: '2026-04-08' },
-    { path: '/privacy-policy',             priority: '0.4', freq: 'yearly',  lastmod: '2026-04-08' },
-    { path: '/terms-of-service',           priority: '0.4', freq: 'yearly',  lastmod: '2026-04-08' },
+    { path: '',                            priority: '1.0', freq: 'daily',   lastmod: TODAY },
+    { path: '/tiktok-video-downloader',    priority: '0.9', freq: 'weekly',  lastmod: TODAY },
+    { path: '/instagram-reels-downloader', priority: '0.9', freq: 'weekly',  lastmod: TODAY },
+    { path: '/facebook-video-downloader',  priority: '0.9', freq: 'weekly',  lastmod: TODAY },
+    { path: '/youtube-video-downloader',   priority: '0.9', freq: 'weekly',  lastmod: TODAY },
+    { path: '/twitter-video-downloader',   priority: '0.9', freq: 'weekly',  lastmod: TODAY },
+    { path: '/pinterest-video-downloader', priority: '0.9', freq: 'weekly',  lastmod: TODAY },
+    { path: '/blog',                       priority: '0.8', freq: 'weekly',  lastmod: TODAY },
+    { path: '/faq',                        priority: '0.8', freq: 'monthly', lastmod: TODAY },
+    { path: '/how-it-works',               priority: '0.7', freq: 'monthly', lastmod: TODAY },
+    { path: '/about',                      priority: '0.6', freq: 'monthly', lastmod: TODAY },
+    { path: '/contact',                    priority: '0.6', freq: 'monthly', lastmod: TODAY },
+    { path: '/privacy-policy',             priority: '0.4', freq: 'yearly',  lastmod: TODAY },
+    { path: '/terms-of-service',           priority: '0.4', freq: 'yearly',  lastmod: TODAY },
   ];
 
   // Dynamically include all blog posts
@@ -26,7 +36,7 @@ export async function GET() {
     path: `/blog/${post.slug}`,
     priority: '0.7',
     freq: 'monthly',
-    lastmod: post.date || '2026-04-08',
+    lastmod: post.date || TODAY,
   }));
 
   const allRoutes = [...staticRoutes, ...blogRoutes];

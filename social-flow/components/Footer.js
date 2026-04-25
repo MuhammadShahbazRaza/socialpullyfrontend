@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Twitter, Facebook, Instagram, Youtube } from 'lucide-react';
+import { InstagramIcon, TikTokIcon, XTwitterIcon, PinterestIcon, FacebookIcon, YouTubeIcon } from './PlatformIcons';
 
 function SocialPullyLogo({ size = 32 }) {
   return (
@@ -23,12 +23,12 @@ export default function Footer() {
 
   const footerLinks = {
     'Platforms': [
-      { href: '/instagram-reels-downloader', label: '📸 Instagram Downloader' },
-      { href: '/tiktok-video-downloader', label: '🎵 TikTok Downloader' },
-      { href: '/facebook-video-downloader', label: '📘 Facebook Downloader' },
-      { href: '/youtube-video-downloader', label: '▶️ YouTube Downloader' },
-      { href: '/twitter-video-downloader', label: '🐦 Twitter Downloader' },
-      { href: '/pinterest-video-downloader', label: '📌 Pinterest Downloader' },
+      { href: '/instagram-reels-downloader', label: 'Instagram Downloader', icon: <InstagramIcon size={15} /> },
+      { href: '/tiktok-video-downloader', label: 'TikTok Downloader', icon: <TikTokIcon size={15} /> },
+      { href: '/facebook-video-downloader', label: 'Facebook Downloader', icon: <FacebookIcon size={15} /> },
+      { href: '/youtube-video-downloader', label: 'YouTube Downloader', icon: <YouTubeIcon size={15} /> },
+      { href: '/twitter-video-downloader', label: 'Twitter Downloader', icon: <XTwitterIcon size={15} /> },
+      { href: '/pinterest-video-downloader', label: 'Pinterest Downloader', icon: <PinterestIcon size={15} /> },
     ],
     'Resources': [
       { href: '/blog', label: 'Blog' },
@@ -44,10 +44,12 @@ export default function Footer() {
   };
 
   const socialLinks = [
-    { icon: Twitter, label: 'Twitter', href: 'https://twitter.com/socialpully' },
-    { icon: Facebook, label: 'Facebook', href: 'https://facebook.com/socialpully' },
-    { icon: Instagram, label: 'Instagram', href: 'https://instagram.com/socialpully' },
-    { icon: Youtube, label: 'YouTube', href: 'https://youtube.com/@socialpully' },
+    { icon: <XTwitterIcon size={18} />, label: 'Twitter / X', href: 'https://x.com/socialpully' },
+    { icon: <FacebookIcon size={18} />, label: 'Facebook', href: 'https://www.facebook.com/socialpully' },
+    { icon: <InstagramIcon size={18} />, label: 'Instagram', href: 'https://www.instagram.com/socialpully' },
+    { icon: <YouTubeIcon size={18} />, label: 'YouTube', href: 'https://www.youtube.com/@socialpully' },
+    { icon: <TikTokIcon size={18} />, label: 'TikTok', href: 'https://www.tiktok.com/@socialpully' },
+    { icon: <PinterestIcon size={18} />, label: 'Pinterest', href: 'https://www.pinterest.com/socialpully' },
   ];
 
   return (
@@ -119,9 +121,13 @@ export default function Footer() {
                           fontSize: '0.875rem',
                           transition: 'color 0.2s',
                           textDecoration: 'none',
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '7px',
                         }}
                         className="hover:text-white"
                       >
+                        {link.icon && <span style={{ display: 'flex', alignItems: 'center', flexShrink: 0 }}>{link.icon}</span>}
                         {link.label}
                       </Link>
                     </li>
@@ -139,28 +145,31 @@ export default function Footer() {
           <p style={{ color: '#4b5563', fontSize: '0.8rem' }}>
             © {currentYear} SocialPully. All rights reserved. Download videos responsibly &amp; respect copyright laws.
           </p>
-          <div style={{ display: 'flex', gap: '8px' }}>
-            {socialLinks.map(({ icon: Icon, label, href }) => (
+          {/* Social profile icons */}
+          <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+            {socialLinks.map(({ icon, label, href }) => (
               <a
                 key={label}
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={label}
+                aria-label={`Follow SocialPully on ${label}`}
+                title={`Follow us on ${label}`}
                 style={{
-                  width: '36px',
-                  height: '36px',
-                  borderRadius: '8px',
-                  background: 'rgba(255,255,255,0.05)',
+                  width: '38px',
+                  height: '38px',
+                  borderRadius: '10px',
+                  background: 'rgba(255,255,255,0.06)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   transition: 'all 0.2s',
-                  border: '1px solid rgba(255,255,255,0.06)',
+                  border: '1px solid rgba(255,255,255,0.08)',
+                  textDecoration: 'none',
                 }}
-                className="hover:bg-indigo-600 hover:border-indigo-600"
+                className="hover:scale-110 hover:border-indigo-500 hover:bg-indigo-600/20"
               >
-                <Icon size={16} color="#9ca3af" />
+                {icon}
               </a>
             ))}
           </div>
