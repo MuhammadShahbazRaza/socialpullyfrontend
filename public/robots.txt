@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Block internal/non-indexable paths  
+Disallow: /api/
+Disallow: /_next/
+Disallow: /cdn-cgi/
+Disallow: /_vercel/
+
+# Allow all public pages
+Allow: /instagram-reels-downloader
+Allow: /tiktok-video-downloader
+Allow: /facebook-video-downloader
+Allow: /youtube-video-downloader
+Allow: /twitter-video-downloader
+Allow: /pinterest-video-downloader
+Allow: /blog/
+Allow: /faq
+Allow: /about
+Allow: /how-it-works
+
+# Sitemap location
+Sitemap: https://socialpully.com/sitemap.xml
